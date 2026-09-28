@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1">
+content="width=device-width, initial-scale=1.0">
 
-<title>Scanner Absensi TK</title>
+<title>Absensi PAUD Melati Terpadu</title>
 
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -26,272 +26,1278 @@ type="text/javascript">
 
 <style>
 
+/* =====================================================
+   DASAR
+===================================================== */
+
+*{
+box-sizing:border-box;
+}
+
+html,
+body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+}
+
 body{
 
-margin:0;
+font-family:
+Arial,
+Helvetica,
+sans-serif;
 
 background:
 linear-gradient(
 135deg,
-#fff7fb,
-#f5f1ff
+#fff7fb 0%,
+#f7f2ff 50%,
+#eef9ff 100%
 );
 
-font-family:
-Arial,
-sans-serif;
+color:#343044;
 
-min-height:100vh;
+overflow-x:hidden;
 
 }
 
+
+/* =====================================================
+   CONTAINER UTAMA
+===================================================== */
+
+.app{
+
+width:100%;
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
 
-text-align:center;
+width:100%;
 
-padding:25px 15px 10px;
+padding:
+18px
+30px;
+
+background:
+rgba(255,255,255,.94);
+
+backdrop-filter:
+blur(12px);
+
+border-bottom:
+1px solid rgba(0,0,0,.06);
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:20px;
 
 }
 
+.school-area{
 
-.logo{
+display:flex;
 
-font-size:40px;
+align-items:center;
+
+gap:15px;
 
 }
 
+.school-icon{
 
-.title{
+width:55px;
+height:55px;
+
+border-radius:17px;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
 
 font-size:28px;
 
+background:
+linear-gradient(
+135deg,
+#9b83e8,
+#e9a7ca
+);
+
+box-shadow:
+0 8px 20px
+rgba(130,100,200,.20);
+
+}
+
+.school-name{
+
+font-size:
+clamp(
+20px,
+3vw,
+32px
+);
+
+font-weight:800;
+
+line-height:1.1;
+
+}
+
+.school-subtitle{
+
+font-size:
+clamp(
+12px,
+1.5vw,
+15px
+);
+
+color:#777;
+
+margin-top:4px;
+
+}
+
+.live-status{
+
+display:flex;
+
+align-items:center;
+
+gap:7px;
+
+font-size:13px;
+
 font-weight:bold;
 
-color:#6f5bc9;
+color:#16a34a;
+
+}
+
+.live-dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#22c55e;
+
+box-shadow:
+0 0 0 5px
+rgba(34,197,94,.12);
 
 }
 
 
-.subtitle{
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+
+flex:1;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+padding:
+25px
+25px
+35px;
+
+}
+
+.content{
+
+width:100%;
+
+max-width:1450px;
+
+display:grid;
+
+grid-template-columns:
+minmax(500px, 1.25fr)
+minmax(330px, .75fr);
+
+gap:25px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card{
+
+background:
+rgba(255,255,255,.94);
+
+border:
+1px solid
+rgba(0,0,0,.06);
+
+border-radius:25px;
+
+box-shadow:
+0 15px 40px
+rgba(70,50,100,.08);
+
+}
+
+
+/* =====================================================
+   SCANNER CARD
+===================================================== */
+
+.scanner-card{
+
+padding:25px;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.card-title{
+
+font-size:
+clamp(
+20px,
+2.5vw,
+28px
+);
+
+font-weight:800;
+
+margin-bottom:5px;
+
+}
+
+.card-description{
+
+color:#777;
+
+margin-bottom:20px;
+
+}
+
+
+/* =====================================================
+   MODE
+===================================================== */
+
+.mode-wrapper{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+margin-bottom:20px;
+
+}
+
+.mode-btn{
+
+border:none;
+
+border-radius:15px;
+
+padding:15px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+background:#f3f0fa;
 
 color:#777;
 
 }
 
-
-.container-scanner{
-
-max-width:650px;
-
-margin:auto;
-
-padding:15px;
-
-}
-
-
-.mode-box{
-
-display:flex;
-
-gap:10px;
-
-margin-bottom:15px;
-
-}
-
-
-.mode-btn{
-
-flex:1;
-
-padding:14px;
-
-border-radius:15px;
-
-border:2px solid #ddd;
-
-background:white;
-
-font-weight:bold;
-
-font-size:17px;
-
-}
-
-
 .mode-btn.active{
 
-background:#7b67d8;
-
-border-color:#7b67d8;
+background:
+linear-gradient(
+135deg,
+#8069df,
+#a98de8
+);
 
 color:white;
 
-}
-
-
-.scanner-card{
-
-background:white;
-
-border-radius:25px;
-
-padding:20px;
-
 box-shadow:
-0 10px 40px
-rgba(60,40,100,.10);
+0 8px 18px
+rgba(128,105,223,.25);
+
+}
+
+.mode-btn:hover{
+
+transform:
+translateY(-1px);
 
 }
 
 
-#reader{
+/* =====================================================
+   CAMERA AREA
+===================================================== */
+
+.camera-container{
 
 width:100%;
 
-overflow:hidden;
+display:flex;
 
-border-radius:20px;
+justify-content:center;
 
-}
-
-
-.scan-frame{
-
-position:absolute;
-
-top:50%;
-
-left:50%;
-
-transform:
-translate(-50%,-50%);
-
-width:60%;
-
-aspect-ratio:1;
-
-border:
-4px solid #fff;
-
-border-radius:20px;
-
-box-shadow:
-0 0 0 9999px
-rgba(0,0,0,.20);
-
-pointer-events:none;
+align-items:center;
 
 }
 
-
-.camera-wrapper{
+.camera-box{
 
 position:relative;
 
+width:100%;
+
+max-width:820px;
+
+aspect-ratio:16 / 10;
+
+min-height:350px;
+
+border-radius:24px;
+
+overflow:hidden;
+
+background:
+#17151e;
+
+border:
+3px solid
+rgba(128,105,223,.35);
+
+box-shadow:
+inset 0 0 0 1px
+rgba(255,255,255,.05);
+
 }
 
 
-.result{
+/* =====================================================
+   VIDEO
+===================================================== */
 
-margin-top:20px;
+#reader{
 
-padding:20px;
+position:absolute;
+
+inset:0;
+
+width:100%;
+
+height:100%;
+
+}
+
+#reader video{
+
+width:100% !important;
+
+height:100% !important;
+
+object-fit:cover !important;
 
 border-radius:20px;
 
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.camera-overlay{
+
+position:absolute;
+
+inset:0;
+
+z-index:10;
+
+pointer-events:none;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+/* =====================================================
+   BINGKAI QR
+   SELALU MUNCUL
+===================================================== */
+
+.scan-frame{
+
+position:relative;
+
+width:
+min(
+62%,
+430px
+);
+
+aspect-ratio:1 / 1;
+
+border-radius:25px;
+
+border:
+4px solid
+rgba(255,255,255,.9);
+
+box-shadow:
+
+0 0 0 9999px
+rgba(0,0,0,.28),
+
+0 0 25px
+rgba(255,255,255,.25);
+
+transition:.3s;
+
+}
+
+
+/* SUDUT */
+
+.scan-frame::before,
+.scan-frame::after{
+
+content:"";
+
+position:absolute;
+
+width:55px;
+
+height:55px;
+
+border-color:#bca9ff;
+
+border-style:solid;
+
+}
+
+.scan-frame::before{
+
+top:-4px;
+left:-4px;
+
+border-width:
+7px
+0
+0
+7px;
+
+border-radius:
+20px
+0
+0
+0;
+
+}
+
+.scan-frame::after{
+
+right:-4px;
+bottom:-4px;
+
+border-width:
+0
+7px
+7px
+0;
+
+border-radius:
+0
+0
+20px
+0;
+
+}
+
+
+/* SUDUT TAMBAHAN */
+
+.scan-corner-left-bottom{
+
+position:absolute;
+
+left:-4px;
+bottom:-4px;
+
+width:55px;
+height:55px;
+
+border-left:
+7px solid #bca9ff;
+
+border-bottom:
+7px solid #bca9ff;
+
+border-radius:
+0
+0
+0
+20px;
+
+}
+
+.scan-corner-right-top{
+
+position:absolute;
+
+right:-4px;
+top:-4px;
+
+width:55px;
+height:55px;
+
+border-right:
+7px solid #bca9ff;
+
+border-top:
+7px solid #bca9ff;
+
+border-radius:
+0
+20px
+0
+0;
+
+}
+
+
+/* =====================================================
+   LASER
+===================================================== */
+
+.scan-laser{
+
+position:absolute;
+
+left:8%;
+
+right:8%;
+
+height:3px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#ff8bc5,
+#ffffff,
+#ff8bc5,
+transparent
+);
+
+box-shadow:
+0 0 10px
+#ff8bc5;
+
+animation:
+laser 2s
+infinite;
+
+display:none;
+
+}
+
+.camera-active
+.scan-laser{
+
+display:block;
+
+}
+
+@keyframes laser{
+
+0%{
+
+top:8%;
+
+}
+
+50%{
+
+top:92%;
+
+}
+
+100%{
+
+top:8%;
+
+}
+
+}
+
+
+/* =====================================================
+   CAMERA STATUS
+===================================================== */
+
+.camera-status{
+
+position:absolute;
+
+left:50%;
+
+bottom:25px;
+
+transform:
+translateX(-50%);
+
+z-index:20;
+
+background:
+rgba(0,0,0,.65);
+
+color:white;
+
+padding:
+10px
+18px;
+
+border-radius:30px;
+
+font-size:14px;
+
+font-weight:bold;
+
+white-space:nowrap;
+
+backdrop-filter:
+blur(8px);
+
+}
+
+
+/* =====================================================
+   DEFAULT CAMERA
+===================================================== */
+
+.camera-placeholder{
+
+position:absolute;
+
+inset:0;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+gap:12px;
+
+color:white;
+
 text-align:center;
+
+background:
+radial-gradient(
+circle at center,
+#312b42,
+#17151e
+);
+
+}
+
+.camera-placeholder-icon{
+
+font-size:65px;
+
+opacity:.8;
+
+}
+
+.camera-placeholder-title{
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+.camera-placeholder-text{
+
+font-size:14px;
+
+color:#cfcbd9;
+
+}
+
+
+/* =====================================================
+   HILANG SAAT CAMERA AKTIF
+===================================================== */
+
+.camera-active
+.camera-placeholder{
 
 display:none;
 
 }
 
 
-.result.success{
+/* =====================================================
+   BUTTON
+===================================================== */
 
-display:block;
-
-background:#dcfce7;
-
-color:#166534;
-
-}
-
-
-.result.error{
-
-display:block;
-
-background:#fee2e2;
-
-color:#991b1b;
-
-}
-
-
-.result-icon{
-
-font-size:55px;
-
-}
-
-
-.student-name{
-
-font-size:27px;
-
-font-weight:bold;
-
-margin:8px 0;
-
-}
-
-
-.buttons{
+.controls{
 
 display:grid;
 
 grid-template-columns:
 1fr 1fr;
 
-gap:10px;
+gap:12px;
 
-margin-top:15px;
+margin-top:18px;
 
 }
 
+.btn-camera{
 
-.btn-main{
-
-border:0;
+border:none;
 
 border-radius:14px;
 
-padding:13px;
+padding:15px;
+
+font-size:16px;
 
 font-weight:bold;
 
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.btn-start{
+
+background:
+linear-gradient(
+135deg,
+#8069df,
+#a48be7
+);
+
+color:white;
+
+}
+
+.btn-switch{
+
+background:#f1eef8;
+
+color:#6652a8;
+
+}
+
+.btn-camera:hover{
+
+transform:
+translateY(-2px);
+
+}
+
+.btn-camera:disabled{
+
+opacity:.45;
+
+cursor:not-allowed;
+
+transform:none;
+
 }
 
 
-.status-bar{
+/* =====================================================
+   FILE SCAN
+===================================================== */
+
+.file-scan{
+
+margin-top:12px;
+
+width:100%;
+
+border:
+2px dashed #ddd5ee;
+
+border-radius:14px;
+
+padding:14px;
 
 text-align:center;
 
-padding:10px;
+cursor:pointer;
 
 color:#777;
 
-font-size:14px;
+background:#faf9fd;
+
+}
+
+.file-scan:hover{
+
+background:#f5f1fb;
+
+}
+
+.file-scan input{
+
+display:none;
 
 }
 
 
-input[type=file]{
+/* =====================================================
+   RESULT CARD
+===================================================== */
+
+.result-card{
+
+padding:25px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+min-height:100%;
+
+}
+
+.result-icon{
+
+font-size:70px;
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+.result-title{
+
+text-align:center;
+
+font-size:
+clamp(
+22px,
+3vw,
+30px
+);
+
+font-weight:800;
+
+}
+
+.result-message{
+
+text-align:center;
+
+color:#777;
+
+margin-bottom:25px;
+
+}
+
+.student-result{
+
+background:
+linear-gradient(
+135deg,
+#faf7ff,
+#fff8fb
+);
+
+border-radius:20px;
+
+padding:22px;
 
 display:none;
+
+}
+
+.student-result.show{
+
+display:block;
+
+}
+
+.student-name{
+
+font-size:
+clamp(
+25px,
+3vw,
+35px
+);
+
+font-weight:800;
+
+text-align:center;
+
+color:#6652a8;
+
+}
+
+.student-class{
+
+text-align:center;
+
+font-size:17px;
+
+color:#777;
+
+margin-top:5px;
+
+}
+
+.result-info{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+margin-top:20px;
+
+}
+
+.info{
+
+background:white;
+
+border-radius:14px;
+
+padding:14px;
+
+text-align:center;
+
+}
+
+.info-label{
+
+font-size:12px;
+
+color:#888;
+
+}
+
+.info-value{
+
+font-size:18px;
+
+font-weight:bold;
+
+margin-top:5px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+
+padding:
+15px 25px;
+
+text-align:center;
+
+font-size:13px;
+
+color:#888;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media(
+max-width:1100px
+){
+
+.content{
+
+grid-template-columns:
+1fr;
+
+max-width:900px;
+
+}
+
+.result-card{
+
+min-height:auto;
+
+}
+
+.camera-box{
+
+max-width:850px;
+
+}
+
+}
+
+
+/* =====================================================
+   TABLET PORTRAIT
+===================================================== */
+
+@media(
+max-width:700px
+){
+
+.header{
+
+padding:
+15px;
+
+}
+
+.school-icon{
+
+width:45px;
+height:45px;
+
+font-size:23px;
+
+}
+
+.live-status{
+
+display:none;
+
+}
+
+.main{
+
+padding:
+15px;
+
+}
+
+.scanner-card,
+.result-card{
+
+padding:18px;
+
+}
+
+.camera-box{
+
+aspect-ratio:
+4 / 3;
+
+min-height:320px;
+
+}
+
+.scan-frame{
+
+width:68%;
+
+}
+
+.controls{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+/* =====================================================
+   LAPTOP FULL SCREEN
+===================================================== */
+
+@media(
+min-width:1101px
+){
+
+.app{
+
+min-height:100vh;
+
+}
+
+.main{
+
+align-items:stretch;
+
+}
+
+.content{
+
+height:
+calc(100vh - 145px);
+
+}
+
+.scanner-card,
+.result-card{
+
+height:100%;
+
+}
+
+.camera-box{
+
+flex:1;
+
+aspect-ratio:auto;
+
+min-height:450px;
+
+}
+
+}
+
+
+/* =====================================================
+   LANDSCAPE TABLET
+===================================================== */
+
+@media(
+min-width:700px
+)
+and
+(max-width:1100px)
+and
+(orientation:landscape)
+{
+
+.camera-box{
+
+aspect-ratio:
+16 / 8;
+
+min-height:400px;
+
+}
+
+.scan-frame{
+
+width:42%;
+
+}
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(
+max-width:500px
+){
+
+.school-name{
+
+font-size:20px;
+
+}
+
+.school-subtitle{
+
+font-size:11px;
+
+}
+
+.mode-btn{
+
+font-size:14px;
+
+padding:12px;
+
+}
+
+.camera-box{
+
+min-height:300px;
+
+}
+
+.scan-frame{
+
+width:70%;
+
+}
+
+.camera-placeholder-icon{
+
+font-size:50px;
+
+}
+
+.camera-placeholder-title{
+
+font-size:18px;
+
+}
 
 }
 
@@ -303,38 +1309,94 @@ display:none;
 <body>
 
 
-<div class="header">
+<div class="app">
 
-<div class="logo">
-🎓
+
+<!-- =================================================
+HEADER
+================================================= -->
+
+<header class="header">
+
+<div class="school-area">
+
+<div class="school-icon">
+
+🌸
+
 </div>
 
-<div class="title">
-TK CERIA
+
+<div>
+
+<div class="school-name">
+
+PAUD MELATI TERPADU
+
 </div>
 
-<div class="subtitle">
-Scanner Absensi Siswa
+<div class="school-subtitle">
+
+Sistem Absensi Digital
+
+</div>
+
 </div>
 
 </div>
 
 
+<div class="live-status">
 
-<div class="container-scanner">
+<span class="live-dot"></span>
+
+Sistem Aktif
+
+</div>
+
+</header>
+
+
+
+<!-- =================================================
+MAIN
+================================================= -->
+
+<main class="main">
+
+<div class="content">
+
+
+<!-- =================================================
+SCANNER
+================================================= -->
+
+<section class="card scanner-card">
+
+
+<div class="card-title">
+
+📷 Scan Absensi
+
+</div>
+
+<div class="card-description">
+
+Arahkan QR Code siswa ke dalam bingkai.
+
+</div>
 
 
 <!-- MODE -->
 
-<div class="mode-box">
-
+<div class="mode-wrapper">
 
 <button
 id="modeMasuk"
 class="mode-btn active"
 onclick="setMode('masuk')">
 
-🏫 MASUK
+🏫 ABSEN MASUK
 
 </button>
 
@@ -344,122 +1406,265 @@ id="modePulang"
 class="mode-btn"
 onclick="setMode('pulang')">
 
-🏠 PULANG
+🏠 ABSEN PULANG
 
 </button>
 
-
 </div>
 
 
+<!-- CAMERA -->
 
-<div class="scanner-card">
+<div class="camera-container">
 
-
-<div class="text-center mb-3">
-
-<h4 id="modeTitle">
-📚 Scan Absen Masuk
-</h4>
-
-<p class="text-muted mb-0">
-
-Arahkan QR Code siswa
-ke kamera
-
-</p>
-
-</div>
+<div
+id="cameraBox"
+class="camera-box">
 
 
-
-<div class="camera-wrapper">
+<!-- HTML5 QR -->
 
 <div id="reader"></div>
 
-<div class="scan-frame"></div>
+
+<!-- PLACEHOLDER -->
+
+<div
+class="camera-placeholder">
+
+<div
+class="camera-placeholder-icon">
+
+📷
+
+</div>
+
+<div
+class="camera-placeholder-title">
+
+Kamera Belum Diaktifkan
+
+</div>
+
+<div
+class="camera-placeholder-text">
+
+Tekan tombol
+<strong>
+AKTIFKAN KAMERA
+</strong>
+untuk memulai.
+
+</div>
 
 </div>
 
 
+<!-- OVERLAY -->
 
-<div class="status-bar"
-id="cameraStatus">
+<div class="camera-overlay">
+
+<div class="scan-frame">
+
+<div
+class="scan-corner-left-bottom">
+</div>
+
+<div
+class="scan-corner-right-top">
+</div>
+
+<div class="scan-laser">
+</div>
+
+</div>
+
+</div>
+
+
+<div
+id="cameraStatus"
+class="camera-status">
 
 Kamera belum aktif
 
 </div>
 
 
-
-<div class="buttons">
-
-
-<button
-class="btn btn-primary btn-main"
-onclick="startScanner()">
-
-📷 Aktifkan Kamera
-
-</button>
-
-
-<button
-class="btn btn-outline-primary btn-main"
-onclick="switchCamera()">
-
-🔄 Ganti Kamera
-
-</button>
-
-
-<label
-class="btn btn-outline-secondary btn-main">
-
-🖼️ Scan Foto
-
-<input
-type="file"
-accept="image/*"
-id="fileInput"
-onchange="scanFile(event)">
-
-</label>
-
-
-<button
-class="btn btn-outline-danger btn-main"
-onclick="stopScanner()">
-
-⏹️ Matikan
-
-</button>
-
+</div>
 
 </div>
 
 
+<!-- BUTTON -->
 
-<div
-id="result"
-class="result">
+<div class="controls">
+
+
+<button
+id="startButton"
+class="btn-camera btn-start"
+onclick="toggleCamera()">
+
+📷 AKTIFKAN KAMERA
+
+</button>
+
+
+<button
+id="switchButton"
+class="btn-camera btn-switch"
+onclick="switchCamera()"
+disabled>
+
+🔄 GANTI KAMERA
+
+</button>
+
+</div>
+
+
+<!-- FILE -->
+
+<label class="file-scan">
+
+📁
+Scan QR dari File / Foto
+
+<input
+type="file"
+accept="image/*"
+id="qrFile"
+onchange="scanFromFile(event)">
+
+</label>
+
+
+</section>
+
+
+
+<!-- =================================================
+RESULT
+================================================= -->
+
+<section class="card result-card">
+
 
 <div
 id="resultIcon"
 class="result-icon">
 
+👋
+
 </div>
 
 
 <div
-id="resultText">
+id="resultTitle"
+class="result-title">
+
+Selamat Datang! 🌸
+
+</div>
+
+
+<div
+id="resultMessage"
+class="result-message">
+
+Silakan scan QR Code untuk melakukan absensi.
+
+</div>
+
+
+<div
+id="studentResult"
+class="student-result">
+
+
+<div
+id="studentName"
+class="student-name">
+
+-
+
+</div>
+
+
+<div
+id="studentClass"
+class="student-class">
+
+-
+
+</div>
+
+
+<div class="result-info">
+
+
+<div class="info">
+
+<div class="info-label">
+
+WAKTU
+
+</div>
+
+<div
+id="resultTime"
+class="info-value">
+
+-
 
 </div>
 
 </div>
 
 
+<div class="info">
+
+<div class="info-label">
+
+STATUS
+
 </div>
+
+<div
+id="resultStatus"
+class="info-value">
+
+-
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+
+<footer class="footer">
+
+© 2026
+<strong>
+PAUD Melati Terpadu
+</strong>
+•
+Sistem Absensi Digital
+
+</footer>
+
 
 </div>
 
@@ -467,9 +1672,8 @@ id="resultText">
 
 <script>
 
-
 /* =====================================================
-API
+   KONFIGURASI
 ===================================================== */
 
 const API_URL =
@@ -477,106 +1681,162 @@ const API_URL =
 
 
 /* =====================================================
-VARIABLE
+   VARIABLE
 ===================================================== */
 
-let scanner = null;
+let html5QrCode = null;
 
-let running = false;
+let cameraRunning = false;
 
-let cameraMode = "environment";
+let currentCamera = "environment";
 
-let attendanceMode = "masuk";
+let currentMode = "masuk";
 
 let processing = false;
 
 
 /* =====================================================
-MODE
+   MODE
 ===================================================== */
 
 function setMode(mode){
 
-attendanceMode =
-mode;
+currentMode = mode;
 
 
 document
-.getElementById(
-"modeMasuk"
-)
+.getElementById("modeMasuk")
 .classList
 .toggle(
 "active",
-mode==="masuk"
+mode === "masuk"
 );
 
 
 document
-.getElementById(
-"modePulang"
-)
+.getElementById("modePulang")
 .classList
 .toggle(
 "active",
-mode==="pulang"
+mode === "pulang"
 );
 
 
-document
-.getElementById(
-"modeTitle"
-)
-.innerText =
-mode==="masuk"
-? "📚 Scan Absen Masuk"
-: "🏠 Scan Absen Pulang";
+if(mode === "masuk"){
 
+setCameraStatus(
+cameraRunning
+? "Siap scan absen masuk"
+: "Kamera belum aktif"
+);
+
+}else{
+
+setCameraStatus(
+cameraRunning
+? "Siap scan absen pulang"
+: "Kamera belum aktif"
+);
+
+}
 
 }
 
 
 /* =====================================================
-START CAMERA
+   STATUS
 ===================================================== */
 
-async function startScanner(){
+function setCameraStatus(text){
 
-if(running){
-return;
+document
+.getElementById("cameraStatus")
+.innerText =
+text;
+
 }
 
 
-document
-.getElementById(
-"cameraStatus"
-)
-.innerText =
-"Mengaktifkan kamera...";
+/* =====================================================
+   TOGGLE CAMERA
+===================================================== */
+
+async function toggleCamera(){
+
+if(cameraRunning){
+
+await stopCamera();
+
+}else{
+
+await startCamera();
+
+}
+
+}
+
+
+/* =====================================================
+   START CAMERA
+===================================================== */
+
+async function startCamera(){
+
+if(cameraRunning){
+
+return;
+
+}
+
+
+setCameraStatus(
+"Mengaktifkan kamera..."
+);
 
 
 try{
 
-scanner =
+if(!html5QrCode){
+
+html5QrCode =
 new Html5Qrcode(
 "reader"
 );
 
+}
 
-await scanner.start(
+
+await html5QrCode.start(
 
 {
 facingMode:
-cameraMode
+currentCamera
 },
 
 {
 fps:10,
 
-qrbox:{
-width:250,
-height:250
-}
+qrbox:function(
+viewfinderWidth,
+viewfinderHeight
+){
+
+const size =
+Math.floor(
+Math.min(
+viewfinderWidth,
+viewfinderHeight
+) * 0.55
+);
+
+return {
+width:size,
+height:size
+};
+
+},
+
+aspectRatio:1.0
 
 },
 
@@ -584,42 +1844,57 @@ onScanSuccess,
 
 function(errorMessage){
 
-// Abaikan error scan kecil
-
 }
 
 );
 
 
-running=true;
+cameraRunning = true;
 
 
 document
-.getElementById(
-"cameraStatus"
-)
+.getElementById("cameraBox")
+.classList
+.add("camera-active");
+
+
+document
+.getElementById("switchButton")
+.disabled = false;
+
+
+document
+.getElementById("startButton")
 .innerText =
-cameraMode==="environment"
-? "Kamera belakang aktif"
-: "Kamera depan aktif";
+"⏹ MATIKAN KAMERA";
 
 
-}
-catch(error){
+setCameraStatus(
+currentMode === "masuk"
+? "Siap scan absen masuk"
+: "Siap scan absen pulang"
+);
+
+
+}catch(error){
 
 console.error(error);
 
 
-document
-.getElementById(
-"cameraStatus"
-)
-.innerText =
-"Gagal membuka kamera";
+cameraRunning = false;
 
 
-showError(
-"❌ Kamera tidak dapat digunakan. Pastikan izin kamera diberikan."
+setCameraStatus(
+"Kamera gagal diaktifkan"
+);
+
+
+alert(
+"❌ Kamera tidak dapat diaktifkan.\n\n"
++"Pastikan:\n"
++"• Browser mengizinkan kamera\n"
++"• Website menggunakan HTTPS\n"
++"• Kamera tidak sedang digunakan aplikasi lain."
 );
 
 }
@@ -628,93 +1903,105 @@ showError(
 
 
 /* =====================================================
-STOP
+   STOP CAMERA
 ===================================================== */
 
-async function stopScanner(){
+async function stopCamera(){
 
 if(
-scanner &&
-running
+!html5QrCode ||
+!cameraRunning
 ){
+
+return;
+
+}
+
 
 try{
 
-await scanner.stop();
+await html5QrCode.stop();
 
-scanner.clear();
-
-}
-catch(error){
+}catch(error){
 
 console.log(error);
 
 }
 
-}
 
-
-scanner=null;
-
-running=false;
+cameraRunning = false;
 
 
 document
-.getElementById(
-"cameraStatus"
-)
+.getElementById("cameraBox")
+.classList
+.remove("camera-active");
+
+
+document
+.getElementById("switchButton")
+.disabled = true;
+
+
+document
+.getElementById("startButton")
 .innerText =
-"Kamera belum aktif";
+"📷 AKTIFKAN KAMERA";
+
+
+setCameraStatus(
+"Kamera belum aktif"
+);
 
 }
 
 
 /* =====================================================
-SWITCH CAMERA
+   SWITCH CAMERA
 ===================================================== */
 
 async function switchCamera(){
 
-cameraMode =
-cameraMode==="environment"
+if(!cameraRunning){
+
+return;
+
+}
+
+
+await stopCamera();
+
+
+currentCamera =
+currentCamera === "environment"
 ? "user"
 : "environment";
 
 
-if(running){
-
-await stopScanner();
-
-await startScanner();
-
-}
+await startCamera();
 
 }
 
 
 /* =====================================================
-SCAN SUCCESS
+   QR BERHASIL
 ===================================================== */
 
-async function onScanSuccess(
-decodedText
+function onScanSuccess(
+decodedText,
+decodedResult
 ){
 
 if(processing){
+
 return;
+
 }
 
-
-processing=true;
-
-
-await stopScanner();
+processing = true;
 
 
-showLoading();
-
-
-sendAttendance(
+processQR(
 decodedText
 );
 
@@ -722,18 +2009,26 @@ decodedText
 
 
 /* =====================================================
-SEND ATTENDANCE
+   PROCESS QR
 ===================================================== */
 
-function sendAttendance(qr){
+function processQR(
+qr
+){
 
 const callbackName =
-"absensiCallback_" +
+"qrCallback_"
++
 Date.now();
 
 
 window[callbackName] =
 function(result){
+
+handleResult(
+result
+);
+
 
 try{
 
@@ -741,15 +2036,31 @@ delete window[
 callbackName
 ];
 
-}
-catch(e){}
-
-
-handleResult(
-result
-);
+}catch(e){}
 
 };
+
+
+const url =
+API_URL
++
+"?action=scan"
++
+"&mode="
++
+encodeURIComponent(
+currentMode
+)
++
+"&qr="
++
+encodeURIComponent(
+qr
+)
++
+"&callback="
++
+callbackName;
 
 
 const script =
@@ -757,40 +2068,29 @@ document.createElement(
 "script"
 );
 
-
-const url =
-API_URL
-+"?action=scan"
-+"&mode="
-+encodeURIComponent(
-attendanceMode
-)
-+"&qr="
-+encodeURIComponent(
-qr
-)
-+"&callback="
-+callbackName
-+"&t="
-+Date.now();
-
-
-script.src=url;
+script.src =
+url;
 
 
 script.onerror =
 function(){
 
-showError(
-"❌ Server absensi tidak dapat dihubungi."
-);
+handleResult({
 
-processing=false;
+success:false,
+
+type:"ERROR",
+
+message:
+"Gagal terhubung ke server."
+
+});
 
 };
 
 
-document.body
+document
+.body
 .appendChild(
 script
 );
@@ -799,356 +2099,262 @@ script
 
 
 /* =====================================================
-RESULT
+   RESULT
 ===================================================== */
 
-function handleResult(result){
-
-processing=false;
-
-
-if(
-result &&
-result.success
+function handleResult(
+result
 ){
 
-if(
-result.type==="MASUK"
-){
-
-showSuccess(
-
-"🎉",
-
-result.siswa,
-
-"Berhasil Absen Masuk",
-
-result.jam,
-
-result.status
-
-);
+processing = false;
 
 
-speak(
-"Selamat datang "
-+result.siswa
-+". Selamat belajar!"
-);
+if(!result){
+
+return;
 
 }
-else
-if(
-result.type==="PULANG"
-){
 
-showSuccess(
 
-"🏠",
-
-result.siswa,
-
-"Berhasil Absen Pulang",
-
-result.jam,
-
-""
-
+const icon =
+document.getElementById(
+"resultIcon"
 );
 
+const title =
+document.getElementById(
+"resultTitle"
+);
+
+const message =
+document.getElementById(
+"resultMessage"
+);
+
+const studentResult =
+document.getElementById(
+"studentResult"
+);
+
+
+if(result.success){
+
+studentResult
+.classList
+.add("show");
+
+
+document.getElementById(
+"studentName"
+).innerText =
+result.siswa || "-";
+
+
+document.getElementById(
+"studentClass"
+).innerText =
+"Kelas "
++
+(result.kelas || "-");
+
+
+document.getElementById(
+"resultTime"
+).innerText =
+result.jam || "-";
+
+
+document.getElementById(
+"resultStatus"
+).innerText =
+result.status || "BERHASIL";
+
+
+if(result.type === "PULANG"){
+
+icon.innerText =
+"🏠";
+
+title.innerText =
+"Sampai Jumpa! 🌸";
+
+message.innerText =
+result.message
+||
+"Absen pulang berhasil.";
 
 speak(
 "Sampai jumpa "
-+result.siswa
-+". Hati-hati di jalan!"
++
+(result.siswa || "")
+);
+
+}else{
+
+icon.innerText =
+"🎉";
+
+title.innerText =
+"Selamat Datang! 🌸";
+
+message.innerText =
+result.message
+||
+"Absen masuk berhasil.";
+
+speak(
+"Selamat datang "
++
+(result.siswa || "")
 );
 
 }
 
 
-setTimeout(
-function(){
-
-startScanner();
-
-},
-3500
-);
+}else{
 
 
-return;
-
-}
+studentResult
+.classList
+.remove("show");
 
 
 if(
-result.type==="DUPLICATE"
+result.type ===
+"DUPLICATE"
 ){
 
-showError(
+icon.innerText =
+"😊";
 
-"😊 " +
-result.message
+title.innerText =
+"Sudah Absen";
 
-);
-
+message.innerText =
+result.message;
 
 speak(
 result.message
 );
 
-
-setTimeout(
-function(){
-
-startScanner();
-
-},
-3000
-);
-
-
-return;
-
 }
 
-
-if(
-result.type==="DUPLICATE_OUT"
+else if(
+result.type ===
+"DUPLICATE_OUT"
 ){
 
-showError(
+icon.innerText =
+"😊";
 
-"😊 " +
-result.message
+title.innerText =
+"Sudah Absen Pulang";
 
-);
-
+message.innerText =
+result.message;
 
 speak(
 result.message
 );
 
-
-setTimeout(
-function(){
-
-startScanner();
-
-},
-3000
-);
-
-
-return;
-
 }
 
-
-if(
-result.type==="NOT_YET_IN"
+else if(
+result.type ===
+"NOT_YET_IN"
 ){
 
-showError(
+icon.innerText =
+"🏫";
 
-"⚠️ " +
-result.message
+title.innerText =
+"Belum Absen Masuk";
 
-);
-
+message.innerText =
+result.message;
 
 speak(
 result.message
 );
 
-
-setTimeout(
-function(){
-
-startScanner();
-
-},
-3000
-);
-
-
-return;
-
 }
 
-
-showError(
-
-"😅 " +
-(
-result.message ||
-"QR tidak dikenali."
-)
-
-);
-
-
-setTimeout(
-function(){
-
-startScanner();
-
-},
-3000
-);
-
-}
-
-
-/* =====================================================
-LOADING
-===================================================== */
-
-function showLoading(){
-
-const box =
-document.getElementById(
-"result"
-);
-
-
-box.className =
-"result success";
-
-
-box.style.display =
-"block";
-
-
-document
-.getElementById(
-"resultIcon"
-)
-.innerText =
-"⏳";
-
-
-document
-.getElementById(
-"resultText"
-)
-.innerHTML =
-"<b>Memproses absensi...</b>";
-
-}
-
-
-/* =====================================================
-SUCCESS
-===================================================== */
-
-function showSuccess(
-icon,
-name,
-message,
-time,
-status
+else if(
+result.type ===
+"NOT_FOUND"
 ){
 
-const box =
-document.getElementById(
-"result"
-);
-
-
-box.className =
-"result success";
-
-
-box.style.display =
-"block";
-
-
-document
-.getElementById(
-"resultIcon"
-)
-.innerText =
-icon;
-
-
-document
-.getElementById(
-"resultText"
-)
-.innerHTML =
-
-'<div class="student-name">'
-+escapeHTML(name)
-+'</div>'
-
-+'<div>'
-+escapeHTML(message)
-+'</div>'
-
-+'<div class="mt-2">'
-+'🕐 '
-+escapeHTML(time)
-+'</div>'
-
-+(status
-?
-'<div class="mt-2">'
-+'Status: <b>'
-+escapeHTML(status)
-+'</b>'
-+'</div>'
-:"");
-
-}
-
-
-/* =====================================================
-ERROR
-===================================================== */
-
-function showError(message){
-
-const box =
-document.getElementById(
-"result"
-);
-
-
-box.className =
-"result error";
-
-
-box.style.display =
-"block";
-
-
-document
-.getElementById(
-"resultIcon"
-)
-.innerText =
+icon.innerText =
 "😅";
 
+title.innerText =
+"QR Tidak Dikenal";
 
-document
-.getElementById(
-"resultText"
-)
-.innerHTML =
-'<b>'
-+escapeHTML(message)
-+'</b>';
+message.innerText =
+result.message;
+
+speak(
+"QR siswa tidak terdaftar"
+);
+
+}
+
+else{
+
+icon.innerText =
+"⚠️";
+
+title.innerText =
+"Terjadi Masalah";
+
+message.innerText =
+result.message
+||
+"Silakan coba lagi.";
+
+}
 
 }
 
 
 /* =====================================================
-SPEECH
+   RESET RESULT
 ===================================================== */
 
-function speak(text){
+setTimeout(
+function(){
+
+if(!processing){
+
+studentResult
+.classList
+.remove("show");
+
+icon.innerText =
+"👋";
+
+title.innerText =
+"Selamat Datang! 🌸";
+
+message.innerText =
+"Silakan scan QR Code untuk melakukan absensi.";
+
+}
+
+},
+5000
+);
+
+}
+
+
+/* =====================================================
+   SPEECH
+===================================================== */
+
+function speak(
+text
+){
 
 if(
 !"speechSynthesis"
@@ -1160,6 +2366,8 @@ return;
 }
 
 
+try{
+
 window
 .speechSynthesis
 .cancel();
@@ -1170,18 +2378,14 @@ new SpeechSynthesisUtterance(
 text
 );
 
-
 speech.lang =
 "id-ID";
-
 
 speech.rate =
 0.9;
 
-
 speech.pitch =
 1.15;
-
 
 speech.volume =
 1;
@@ -1193,62 +2397,97 @@ window
 speech
 );
 
+}catch(error){
+
+console.log(error);
+
+}
+
 }
 
 
 /* =====================================================
-SCAN FILE
+   SCAN FILE
 ===================================================== */
 
-async function scanFile(event){
+async function scanFromFile(
+event
+){
 
 const file =
 event.target.files[0];
 
 
 if(!file){
+
 return;
+
 }
 
 
-const temp =
+try{
+
+const scanner =
 new Html5Qrcode(
 "reader"
 );
 
 
-try{
+setCameraStatus(
+"Memproses gambar QR..."
+);
+
 
 const result =
-await temp.scanFile(
+await scanner.scanFile(
 file,
 true
 );
 
 
-sendAttendance(
+handleResult({
+
+success:true,
+
+type:
+currentMode === "pulang"
+? "PULANG"
+: "MASUK",
+
+message:
+"QR berhasil dibaca.",
+
+siswa:"Memproses...",
+
+kelas:"-",
+
+jam:"-",
+
+status:"MEMPROSES"
+
+});
+
+
+processQR(
 result
 );
 
-}
-catch(error){
 
-showError(
-"QR Code tidak ditemukan pada foto."
-);
+}catch(error){
 
-}
+console.error(error);
 
-finally{
 
-try{
+handleResult({
 
-temp.clear();
+success:false,
 
-}
-catch(e){}
+type:"ERROR",
 
-event.target.value="";
+message:
+"QR Code tidak ditemukan pada gambar."
+
+});
 
 }
 
@@ -1256,52 +2495,73 @@ event.target.value="";
 
 
 /* =====================================================
-ESCAPE
+   KEYBOARD SHORTCUT
 ===================================================== */
 
-function escapeHTML(value){
+document.addEventListener(
+"keydown",
+function(event){
 
-return String(
-value || ""
-)
+/*
+ SPACE = kamera
+ */
 
-.replace(
-/&/g,
-"&amp;"
-)
+if(
+event.code ===
+"Space"
+){
 
-.replace(
-/</g,
-"&lt;"
-)
+event.preventDefault();
 
-.replace(
-/>/g,
-"&gt;"
-)
-
-.replace(
-/"/g,
-"&quot;"
-)
-
-.replace(
-/'/g,
-"&#039;"
-);
+toggleCamera();
 
 }
 
 
-/* =====================================================
-INIT
-===================================================== */
+/*
+ M = masuk
+ */
+
+if(
+event.key.toLowerCase()
+===
+"m"
+){
 
 setMode(
 "masuk"
 );
 
+}
+
+
+/*
+ P = pulang
+ */
+
+if(
+event.key.toLowerCase()
+===
+"p"
+){
+
+setMode(
+"pulang"
+);
+
+}
+
+});
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+setMode("masuk");
+
 </script>
+
 
 </body>
 
