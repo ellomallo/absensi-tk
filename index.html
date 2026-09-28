@@ -1,1649 +1,1513 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Absensi PAUD Melati Terpadu</title>
 
 <link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-rel="stylesheet">
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+>
 
 <link
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-rel="stylesheet">
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  rel="stylesheet"
+>
 
 <script
-src="https://unpkg.com/html5-qrcode"
-type="text/javascript">
+  src="https://unpkg.com/html5-qrcode"
+  type="text/javascript">
 </script>
-
 
 <style>
 
-/* =====================================================
-   DASAR
-===================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 html,
 body{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
 }
 
 body{
-
-font-family:
-Arial,
-Helvetica,
-sans-serif;
-
-background:
-linear-gradient(
-135deg,
-#fff7fb 0%,
-#f7f2ff 50%,
-#eef9ff 100%
-);
-
-color:#343044;
-
-overflow-x:hidden;
-
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        linear-gradient(
+            135deg,
+            #fff7fb 0%,
+            #f7f2ff 50%,
+            #eef9ff 100%
+        );
+    color:#343044;
+    overflow-x:hidden;
 }
 
 
-/* =====================================================
-   CONTAINER UTAMA
-===================================================== */
+/* =========================================================
+   APP
+========================================================= */
 
 .app{
-
-width:100%;
-min-height:100vh;
-
-display:flex;
-flex-direction:column;
-
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header{
+    width:100%;
+    padding:14px 28px;
 
-width:100%;
+    background:rgba(255,255,255,.96);
 
-padding:
-18px
-30px;
+    backdrop-filter:blur(12px);
 
-background:
-rgba(255,255,255,.94);
+    border-bottom:1px solid rgba(0,0,0,.06);
 
-backdrop-filter:
-blur(12px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-border-bottom:
-1px solid rgba(0,0,0,.06);
+    gap:20px;
 
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:20px;
-
+    flex-shrink:0;
 }
 
 .school-area{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
+    display:flex;
+    align-items:center;
+    gap:13px;
 }
 
 .school-icon{
+    width:48px;
+    height:48px;
 
-width:55px;
-height:55px;
+    border-radius:15px;
 
-border-radius:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-display:flex;
+    font-size:24px;
 
-align-items:center;
-justify-content:center;
+    background:
+        linear-gradient(
+            135deg,
+            #9b83e8,
+            #e9a7ca
+        );
 
-font-size:28px;
-
-background:
-linear-gradient(
-135deg,
-#9b83e8,
-#e9a7ca
-);
-
-box-shadow:
-0 8px 20px
-rgba(130,100,200,.20);
-
+    box-shadow:
+        0 7px 18px
+        rgba(130,100,200,.20);
 }
 
 .school-name{
-
-font-size:
-clamp(
-20px,
-3vw,
-32px
-);
-
-font-weight:800;
-
-line-height:1.1;
-
+    font-size:clamp(19px,2.5vw,28px);
+    font-weight:800;
+    line-height:1.1;
 }
 
 .school-subtitle{
-
-font-size:
-clamp(
-12px,
-1.5vw,
-15px
-);
-
-color:#777;
-
-margin-top:4px;
-
+    font-size:13px;
+    color:#777;
+    margin-top:3px;
 }
 
 .live-status{
+    display:flex;
+    align-items:center;
+    gap:7px;
 
-display:flex;
+    font-size:13px;
+    font-weight:bold;
 
-align-items:center;
-
-gap:7px;
-
-font-size:13px;
-
-font-weight:bold;
-
-color:#16a34a;
-
+    color:#16a34a;
 }
 
 .live-dot{
+    width:9px;
+    height:9px;
 
-width:10px;
-height:10px;
+    border-radius:50%;
 
-border-radius:50%;
+    background:#22c55e;
 
-background:#22c55e;
-
-box-shadow:
-0 0 0 5px
-rgba(34,197,94,.12);
-
+    box-shadow:
+        0 0 0 5px
+        rgba(34,197,94,.12);
 }
 
 
-/* =====================================================
+/* =========================================================
    MAIN
-===================================================== */
+========================================================= */
 
 .main{
+    flex:1;
 
-flex:1;
+    width:100%;
 
-width:100%;
+    display:flex;
+    justify-content:center;
 
-display:flex;
-
-justify-content:center;
-
-padding:
-25px
-25px
-35px;
-
+    padding:20px 22px 22px;
 }
 
 .content{
+    width:100%;
+    max-width:1350px;
 
-width:100%;
+    display:grid;
 
-max-width:1450px;
+    grid-template-columns:
+        minmax(500px,1.25fr)
+        minmax(320px,.75fr);
 
-display:grid;
+    gap:20px;
 
-grid-template-columns:
-minmax(500px, 1.25fr)
-minmax(330px, .75fr);
-
-gap:25px;
-
+    align-items:start;
 }
 
 
-/* =====================================================
+/* =========================================================
    CARD
-===================================================== */
+========================================================= */
 
 .card{
+    background:rgba(255,255,255,.96);
 
-background:
-rgba(255,255,255,.94);
+    border:1px solid rgba(0,0,0,.06);
 
-border:
-1px solid
-rgba(0,0,0,.06);
+    border-radius:22px;
 
-border-radius:25px;
-
-box-shadow:
-0 15px 40px
-rgba(70,50,100,.08);
-
+    box-shadow:
+        0 12px 35px
+        rgba(70,50,100,.08);
 }
 
 
-/* =====================================================
+/* =========================================================
    SCANNER CARD
-===================================================== */
+========================================================= */
 
 .scanner-card{
+    padding:20px;
 
-padding:25px;
-
-display:flex;
-
-flex-direction:column;
-
+    display:flex;
+    flex-direction:column;
 }
 
 .card-title{
+    font-size:clamp(20px,2.2vw,26px);
+    font-weight:800;
 
-font-size:
-clamp(
-20px,
-2.5vw,
-28px
-);
-
-font-weight:800;
-
-margin-bottom:5px;
-
+    margin-bottom:3px;
 }
 
 .card-description{
+    color:#777;
 
-color:#777;
+    font-size:14px;
 
-margin-bottom:20px;
-
+    margin-bottom:15px;
 }
 
 
-/* =====================================================
+/* =========================================================
    MODE
-===================================================== */
+========================================================= */
 
 .mode-wrapper{
+    display:grid;
 
-display:grid;
+    grid-template-columns:1fr 1fr;
 
-grid-template-columns:1fr 1fr;
+    gap:10px;
 
-gap:12px;
-
-margin-bottom:20px;
-
+    margin-bottom:15px;
 }
 
 .mode-btn{
+    border:none;
 
-border:none;
+    border-radius:13px;
 
-border-radius:15px;
+    padding:12px;
 
-padding:15px;
+    font-size:14px;
+    font-weight:bold;
 
-font-size:16px;
+    cursor:pointer;
 
-font-weight:bold;
+    transition:.2s;
 
-cursor:pointer;
+    background:#f3f0fa;
 
-transition:.2s;
-
-background:#f3f0fa;
-
-color:#777;
-
+    color:#777;
 }
 
 .mode-btn.active{
+    background:
+        linear-gradient(
+            135deg,
+            #8069df,
+            #a98de8
+        );
 
-background:
-linear-gradient(
-135deg,
-#8069df,
-#a98de8
-);
+    color:white;
 
-color:white;
-
-box-shadow:
-0 8px 18px
-rgba(128,105,223,.25);
-
+    box-shadow:
+        0 7px 17px
+        rgba(128,105,223,.23);
 }
 
 .mode-btn:hover{
-
-transform:
-translateY(-1px);
-
+    transform:translateY(-1px);
 }
 
 
-/* =====================================================
-   CAMERA AREA
-===================================================== */
+/* =========================================================
+   CAMERA CONTAINER
+========================================================= */
 
 .camera-container{
+    width:100%;
 
-width:100%;
+    display:flex;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
+    justify-content:center;
+    align-items:center;
 }
+
+
+/* =========================================================
+   CAMERA BOX
+========================================================= */
 
 .camera-box{
+    position:relative;
 
-position:relative;
+    width:100%;
 
-width:100%;
+    max-width:720px;
 
-max-width:820px;
+    height:460px;
 
-aspect-ratio:16 / 10;
+    border-radius:20px;
 
-min-height:350px;
+    overflow:hidden;
 
-border-radius:24px;
+    background:#17151e;
 
-overflow:hidden;
+    border:
+        3px solid
+        rgba(128,105,223,.35);
 
-background:
-#17151e;
-
-border:
-3px solid
-rgba(128,105,223,.35);
-
-box-shadow:
-inset 0 0 0 1px
-rgba(255,255,255,.05);
-
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(255,255,255,.05);
 }
 
 
-/* =====================================================
-   VIDEO
-===================================================== */
+/* =========================================================
+   HTML5 QR READER
+========================================================= */
 
 #reader{
+    position:absolute;
 
-position:absolute;
+    inset:0;
 
-inset:0;
+    width:100%;
+    height:100%;
 
-width:100%;
-
-height:100%;
-
+    z-index:2;
 }
 
 #reader video{
+    width:100%!important;
+    height:100%!important;
 
-width:100% !important;
+    object-fit:cover!important;
 
-height:100% !important;
-
-object-fit:cover !important;
-
-border-radius:20px;
-
+    border-radius:17px;
 }
 
 
-/* =====================================================
-   OVERLAY
-===================================================== */
+/* =========================================================
+   CAMERA PLACEHOLDER
+========================================================= */
+
+.camera-placeholder{
+    position:absolute;
+
+    inset:0;
+
+    z-index:4;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    color:white;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #312b42,
+            #17151e
+        );
+}
+
+.camera-placeholder-icon{
+    font-size:55px;
+
+    opacity:.8;
+}
+
+.camera-placeholder-title{
+    font-size:20px;
+
+    font-weight:bold;
+}
+
+.camera-placeholder-text{
+    font-size:13px;
+
+    color:#cfcbd9;
+
+    padding:0 20px;
+}
+
+.camera-active .camera-placeholder{
+    display:none;
+}
+
+
+/* =========================================================
+   CAMERA OVERLAY
+========================================================= */
 
 .camera-overlay{
+    position:absolute;
 
-position:absolute;
+    inset:0;
 
-inset:0;
+    z-index:10;
 
-z-index:10;
+    pointer-events:none;
 
-pointer-events:none;
+    display:flex;
 
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
+    align-items:center;
+    justify-content:center;
 }
 
 
-/* =====================================================
-   BINGKAI QR
-   SELALU MUNCUL
-===================================================== */
+/* =========================================================
+   SCAN FRAME
+========================================================= */
 
 .scan-frame{
+    position:relative;
 
-position:relative;
+    width:55%;
 
-width:
-min(
-62%,
-430px
-);
+    max-width:350px;
 
-aspect-ratio:1 / 1;
+    aspect-ratio:1/1;
 
-border-radius:25px;
+    border-radius:22px;
 
-border:
-4px solid
-rgba(255,255,255,.9);
+    border:
+        3px solid
+        rgba(255,255,255,.9);
 
-box-shadow:
+    box-shadow:
+        0 0 0 9999px
+        rgba(0,0,0,.28),
 
-0 0 0 9999px
-rgba(0,0,0,.28),
+        0 0 25px
+        rgba(255,255,255,.20);
 
-0 0 25px
-rgba(255,255,255,.25);
-
-transition:.3s;
-
+    transition:.3s;
 }
 
 
-/* SUDUT */
+/* =========================================================
+   CORNERS
+========================================================= */
 
 .scan-frame::before,
 .scan-frame::after{
+    content:"";
 
-content:"";
+    position:absolute;
 
-position:absolute;
+    width:48px;
+    height:48px;
 
-width:55px;
+    border-color:#bca9ff;
 
-height:55px;
-
-border-color:#bca9ff;
-
-border-style:solid;
-
+    border-style:solid;
 }
 
 .scan-frame::before{
+    top:-3px;
+    left:-3px;
 
-top:-4px;
-left:-4px;
+    border-width:6px 0 0 6px;
 
-border-width:
-7px
-0
-0
-7px;
-
-border-radius:
-20px
-0
-0
-0;
-
+    border-radius:17px 0 0 0;
 }
 
 .scan-frame::after{
+    right:-3px;
+    bottom:-3px;
 
-right:-4px;
-bottom:-4px;
+    border-width:0 6px 6px 0;
 
-border-width:
-0
-7px
-7px
-0;
-
-border-radius:
-0
-0
-20px
-0;
-
+    border-radius:0 0 17px 0;
 }
 
-
-/* SUDUT TAMBAHAN */
-
 .scan-corner-left-bottom{
+    position:absolute;
 
-position:absolute;
+    left:-3px;
+    bottom:-3px;
 
-left:-4px;
-bottom:-4px;
+    width:48px;
+    height:48px;
 
-width:55px;
-height:55px;
+    border-left:6px solid #bca9ff;
+    border-bottom:6px solid #bca9ff;
 
-border-left:
-7px solid #bca9ff;
-
-border-bottom:
-7px solid #bca9ff;
-
-border-radius:
-0
-0
-0
-20px;
-
+    border-radius:0 0 0 17px;
 }
 
 .scan-corner-right-top{
+    position:absolute;
 
-position:absolute;
+    right:-3px;
+    top:-3px;
 
-right:-4px;
-top:-4px;
+    width:48px;
+    height:48px;
 
-width:55px;
-height:55px;
+    border-right:6px solid #bca9ff;
+    border-top:6px solid #bca9ff;
 
-border-right:
-7px solid #bca9ff;
-
-border-top:
-7px solid #bca9ff;
-
-border-radius:
-0
-20px
-0
-0;
-
+    border-radius:0 17px 0 0;
 }
 
 
-/* =====================================================
+/* =========================================================
    LASER
-===================================================== */
+========================================================= */
 
 .scan-laser{
+    position:absolute;
 
-position:absolute;
+    left:8%;
+    right:8%;
 
-left:8%;
+    height:3px;
 
-right:8%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff8bc5,
+            #ffffff,
+            #ff8bc5,
+            transparent
+        );
 
-height:3px;
+    box-shadow:
+        0 0 10px #ff8bc5;
 
-background:
-linear-gradient(
-90deg,
-transparent,
-#ff8bc5,
-#ffffff,
-#ff8bc5,
-transparent
-);
+    animation:
+        laser 2s infinite;
 
-box-shadow:
-0 0 10px
-#ff8bc5;
-
-animation:
-laser 2s
-infinite;
-
-display:none;
-
+    display:none;
 }
 
-.camera-active
-.scan-laser{
-
-display:block;
-
+.camera-active .scan-laser{
+    display:block;
 }
 
 @keyframes laser{
 
-0%{
+    0%{
+        top:8%;
+    }
 
-top:8%;
+    50%{
+        top:92%;
+    }
 
-}
-
-50%{
-
-top:92%;
-
-}
-
-100%{
-
-top:8%;
-
-}
+    100%{
+        top:8%;
+    }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    CAMERA STATUS
-===================================================== */
+========================================================= */
 
 .camera-status{
+    position:absolute;
 
-position:absolute;
+    left:50%;
+    bottom:18px;
 
-left:50%;
+    transform:translateX(-50%);
 
-bottom:25px;
+    z-index:20;
 
-transform:
-translateX(-50%);
+    background:
+        rgba(0,0,0,.65);
 
-z-index:20;
+    color:white;
 
-background:
-rgba(0,0,0,.65);
+    padding:8px 15px;
 
-color:white;
+    border-radius:30px;
 
-padding:
-10px
-18px;
+    font-size:13px;
 
-border-radius:30px;
+    font-weight:bold;
 
-font-size:14px;
+    white-space:nowrap;
 
-font-weight:bold;
-
-white-space:nowrap;
-
-backdrop-filter:
-blur(8px);
-
+    backdrop-filter:blur(8px);
 }
 
 
-/* =====================================================
-   DEFAULT CAMERA
-===================================================== */
-
-.camera-placeholder{
-
-position:absolute;
-
-inset:0;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-flex-direction:column;
-
-gap:12px;
-
-color:white;
-
-text-align:center;
-
-background:
-radial-gradient(
-circle at center,
-#312b42,
-#17151e
-);
-
-}
-
-.camera-placeholder-icon{
-
-font-size:65px;
-
-opacity:.8;
-
-}
-
-.camera-placeholder-title{
-
-font-size:22px;
-
-font-weight:bold;
-
-}
-
-.camera-placeholder-text{
-
-font-size:14px;
-
-color:#cfcbd9;
-
-}
-
-
-/* =====================================================
-   HILANG SAAT CAMERA AKTIF
-===================================================== */
-
-.camera-active
-.camera-placeholder{
-
-display:none;
-
-}
-
-
-/* =====================================================
-   BUTTON
-===================================================== */
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .controls{
+    display:grid;
 
-display:grid;
+    grid-template-columns:1fr 1fr;
 
-grid-template-columns:
-1fr 1fr;
+    gap:10px;
 
-gap:12px;
-
-margin-top:18px;
-
+    margin-top:14px;
 }
 
 .btn-camera{
+    border:none;
 
-border:none;
+    border-radius:13px;
 
-border-radius:14px;
+    padding:13px;
 
-padding:15px;
+    font-size:14px;
 
-font-size:16px;
+    font-weight:bold;
 
-font-weight:bold;
+    cursor:pointer;
 
-cursor:pointer;
-
-transition:.2s;
-
+    transition:.2s;
 }
 
 .btn-start{
+    background:
+        linear-gradient(
+            135deg,
+            #8069df,
+            #a48be7
+        );
 
-background:
-linear-gradient(
-135deg,
-#8069df,
-#a48be7
-);
-
-color:white;
-
+    color:white;
 }
 
 .btn-switch{
+    background:#f1eef8;
 
-background:#f1eef8;
-
-color:#6652a8;
-
+    color:#6652a8;
 }
 
 .btn-camera:hover{
-
-transform:
-translateY(-2px);
-
+    transform:translateY(-2px);
 }
 
 .btn-camera:disabled{
+    opacity:.45;
 
-opacity:.45;
+    cursor:not-allowed;
 
-cursor:not-allowed;
-
-transform:none;
-
+    transform:none;
 }
 
 
-/* =====================================================
+/* =========================================================
    FILE SCAN
-===================================================== */
+========================================================= */
 
 .file-scan{
+    margin-top:10px;
 
-margin-top:12px;
+    width:100%;
 
-width:100%;
+    border:
+        2px dashed
+        #ddd5ee;
 
-border:
-2px dashed #ddd5ee;
+    border-radius:13px;
 
-border-radius:14px;
+    padding:11px;
 
-padding:14px;
+    text-align:center;
 
-text-align:center;
+    cursor:pointer;
 
-cursor:pointer;
+    color:#777;
 
-color:#777;
+    background:#faf9fd;
 
-background:#faf9fd;
-
+    font-size:13px;
 }
 
 .file-scan:hover{
-
-background:#f5f1fb;
-
+    background:#f5f1fb;
 }
 
 .file-scan input{
-
-display:none;
-
+    display:none;
 }
 
 
-/* =====================================================
+/* =========================================================
    RESULT CARD
-===================================================== */
+========================================================= */
 
 .result-card{
+    padding:25px;
 
-padding:25px;
+    display:flex;
 
-display:flex;
+    flex-direction:column;
 
-flex-direction:column;
+    justify-content:center;
 
-justify-content:center;
-
-min-height:100%;
-
+    min-height:500px;
 }
 
 .result-icon{
+    font-size:60px;
 
-font-size:70px;
+    text-align:center;
 
-text-align:center;
-
-margin-bottom:10px;
-
+    margin-bottom:8px;
 }
 
 .result-title{
+    text-align:center;
 
-text-align:center;
+    font-size:clamp(23px,2.8vw,30px);
 
-font-size:
-clamp(
-22px,
-3vw,
-30px
-);
-
-font-weight:800;
-
+    font-weight:800;
 }
 
 .result-message{
+    text-align:center;
 
-text-align:center;
+    color:#777;
 
-color:#777;
+    margin-bottom:20px;
 
-margin-bottom:25px;
-
+    font-size:14px;
 }
 
+
+/* =========================================================
+   STUDENT RESULT
+========================================================= */
+
 .student-result{
+    background:
+        linear-gradient(
+            135deg,
+            #faf7ff,
+            #fff8fb
+        );
 
-background:
-linear-gradient(
-135deg,
-#faf7ff,
-#fff8fb
-);
+    border-radius:18px;
 
-border-radius:20px;
+    padding:18px;
 
-padding:22px;
-
-display:none;
-
+    display:none;
 }
 
 .student-result.show{
-
-display:block;
-
+    display:block;
 }
 
 .student-name{
+    font-size:clamp(24px,2.8vw,32px);
 
-font-size:
-clamp(
-25px,
-3vw,
-35px
-);
+    font-weight:800;
 
-font-weight:800;
+    text-align:center;
 
-text-align:center;
-
-color:#6652a8;
-
+    color:#6652a8;
 }
 
 .student-class{
+    text-align:center;
 
-text-align:center;
+    font-size:16px;
 
-font-size:17px;
+    color:#777;
 
-color:#777;
-
-margin-top:5px;
-
+    margin-top:4px;
 }
 
 .result-info{
+    display:grid;
 
-display:grid;
+    grid-template-columns:1fr 1fr;
 
-grid-template-columns:1fr 1fr;
+    gap:10px;
 
-gap:12px;
-
-margin-top:20px;
-
+    margin-top:17px;
 }
 
 .info{
+    background:white;
 
-background:white;
+    border-radius:13px;
 
-border-radius:14px;
+    padding:12px;
 
-padding:14px;
-
-text-align:center;
-
+    text-align:center;
 }
 
 .info-label{
+    font-size:11px;
 
-font-size:12px;
-
-color:#888;
-
+    color:#888;
 }
 
 .info-value{
+    font-size:17px;
 
-font-size:18px;
+    font-weight:bold;
 
-font-weight:bold;
-
-margin-top:5px;
-
+    margin-top:4px;
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 .footer{
+    padding:10px 20px;
 
-padding:
-15px 25px;
+    text-align:center;
 
-text-align:center;
+    font-size:12px;
 
-font-size:13px;
+    color:#888;
 
-color:#888;
+    flex-shrink:0;
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media(min-width:1101px){
+
+    .main{
+        align-items:flex-start;
+
+        padding-top:18px;
+        padding-bottom:18px;
+    }
+
+    .content{
+        height:auto;
+    }
+
+    .scanner-card,
+    .result-card{
+        min-height:610px;
+    }
+
+    .camera-box{
+        width:100%;
+
+        max-width:720px;
+
+        height:430px;
+
+        min-height:0;
+
+        margin:0 auto;
+    }
+
+    .scan-frame{
+        width:52%;
+
+        max-width:320px;
+    }
 
 }
 
 
-/* =====================================================
-   RESPONSIVE TABLET
-===================================================== */
+/* =========================================================
+   TABLET LANDSCAPE
+========================================================= */
 
 @media(
-max-width:1100px
+    min-width:700px
+) and (
+    max-width:1100px
+) and (
+    orientation:landscape
 ){
 
-.content{
+    .header{
+        padding:12px 20px;
+    }
 
-grid-template-columns:
-1fr;
+    .main{
+        padding:15px;
+    }
 
-max-width:900px;
+    .content{
+        grid-template-columns:
+            minmax(450px,1.2fr)
+            minmax(300px,.8fr);
+
+        gap:15px;
+    }
+
+    .camera-box{
+        height:380px;
+
+        max-height:380px;
+    }
+
+    .scan-frame{
+        width:45%;
+
+        max-width:290px;
+    }
+
+    .scanner-card{
+        padding:17px;
+    }
+
+    .result-card{
+        padding:20px;
+
+        min-height:480px;
+    }
 
 }
 
-.result-card{
 
-min-height:auto;
-
-}
-
-.camera-box{
-
-max-width:850px;
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================================
    TABLET PORTRAIT
-===================================================== */
+========================================================= */
 
 @media(
-max-width:700px
+    min-width:700px
+) and (
+    max-width:1100px
+) and (
+    orientation:portrait
 ){
 
-.header{
+    .content{
+        grid-template-columns:1fr;
 
-padding:
-15px;
+        max-width:850px;
+    }
 
-}
+    .camera-box{
+        height:430px;
 
-.school-icon{
+        max-width:700px;
+    }
 
-width:45px;
-height:45px;
+    .scan-frame{
+        width:45%;
 
-font-size:23px;
+        max-width:300px;
+    }
 
-}
-
-.live-status{
-
-display:none;
-
-}
-
-.main{
-
-padding:
-15px;
-
-}
-
-.scanner-card,
-.result-card{
-
-padding:18px;
-
-}
-
-.camera-box{
-
-aspect-ratio:
-4 / 3;
-
-min-height:320px;
-
-}
-
-.scan-frame{
-
-width:68%;
-
-}
-
-.controls{
-
-grid-template-columns:1fr;
-
-}
+    .result-card{
+        min-height:auto;
+    }
 
 }
 
 
-/* =====================================================
-   LAPTOP FULL SCREEN
-===================================================== */
-
-@media(
-min-width:1101px
-){
-
-.app{
-
-min-height:100vh;
-
-}
-
-.main{
-
-align-items:stretch;
-
-}
-
-.content{
-
-height:
-calc(100vh - 145px);
-
-}
-
-.scanner-card,
-.result-card{
-
-height:100%;
-
-}
-
-.camera-box{
-
-flex:1;
-
-aspect-ratio:auto;
-
-min-height:450px;
-
-}
-
-}
-
-
-/* =====================================================
-   LANDSCAPE TABLET
-===================================================== */
-
-@media(
-min-width:700px
-)
-and
-(max-width:1100px)
-and
-(orientation:landscape)
-{
-
-.camera-box{
-
-aspect-ratio:
-16 / 8;
-
-min-height:400px;
-
-}
-
-.scan-frame{
-
-width:42%;
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
+
+@media(max-width:699px){
+
+    .header{
+        padding:12px 15px;
+    }
+
+    .school-icon{
+        width:43px;
+        height:43px;
+
+        font-size:21px;
+    }
+
+    .school-name{
+        font-size:19px;
+    }
+
+    .school-subtitle{
+        font-size:11px;
+    }
+
+    .live-status{
+        display:none;
+    }
+
+    .main{
+        padding:12px;
+    }
+
+    .content{
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+    .scanner-card,
+    .result-card{
+        padding:16px;
+    }
+
+    .camera-box{
+        height:auto;
+
+        aspect-ratio:4/3;
+
+        min-height:290px;
+
+        max-width:none;
+    }
+
+    .scan-frame{
+        width:62%;
+
+        max-width:260px;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .result-card{
+        min-height:auto;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:500px){
+
+    .school-name{
+        font-size:18px;
+    }
+
+    .school-subtitle{
+        font-size:10px;
+    }
+
+    .card-title{
+        font-size:20px;
+    }
+
+    .mode-btn{
+        font-size:13px;
+
+        padding:11px 7px;
+    }
+
+    .camera-box{
+        min-height:270px;
+    }
+
+    .scan-frame{
+        width:66%;
+    }
+
+    .camera-placeholder-icon{
+        font-size:48px;
+    }
+
+    .camera-placeholder-title{
+        font-size:17px;
+    }
+
+    .camera-placeholder-text{
+        font-size:12px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SHORT LAPTOP SCREEN
+========================================================= */
 
 @media(
-max-width:500px
+    min-width:1101px
+) and (
+    max-height:800px
 ){
 
-.school-name{
+    .header{
+        padding:10px 25px;
+    }
 
-font-size:20px;
+    .school-icon{
+        width:42px;
+        height:42px;
+
+        font-size:21px;
+    }
+
+    .main{
+        padding-top:12px;
+        padding-bottom:10px;
+    }
+
+    .scanner-card{
+        padding:16px;
+    }
+
+    .result-card{
+        padding:18px;
+
+        min-height:540px;
+    }
+
+    .camera-box{
+        height:350px;
+    }
+
+    .scan-frame{
+        width:48%;
+
+        max-width:270px;
+    }
+
+    .controls{
+        margin-top:10px;
+    }
+
+    .btn-camera{
+        padding:10px;
+    }
+
+    .file-scan{
+        padding:8px;
+        margin-top:7px;
+    }
+
+    .footer{
+        padding:6px;
+    }
 
 }
 
-.school-subtitle{
 
-font-size:11px;
+/* =========================================================
+   ANIMATION
+========================================================= */
 
-}
+@keyframes pulse{
 
-.mode-btn{
+    0%{
+        transform:scale(1);
+    }
 
-font-size:14px;
+    50%{
+        transform:scale(1.03);
+    }
 
-padding:12px;
-
-}
-
-.camera-box{
-
-min-height:300px;
-
-}
-
-.scan-frame{
-
-width:70%;
-
-}
-
-.camera-placeholder-icon{
-
-font-size:50px;
-
-}
-
-.camera-placeholder-title{
-
-font-size:18px;
-
-}
+    100%{
+        transform:scale(1);
+    }
 
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="app">
 
 
-<!-- =================================================
-HEADER
-================================================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
-<div class="school-area">
+    <div class="school-area">
 
-<div class="school-icon">
+        <div class="school-icon">
+            🌸
+        </div>
 
-🌸
+        <div>
 
-</div>
+            <div class="school-name">
+                PAUD MELATI TERPADU
+            </div>
 
+            <div class="school-subtitle">
+                Sistem Absensi Digital
+            </div>
 
-<div>
+        </div>
 
-<div class="school-name">
-
-PAUD MELATI TERPADU
-
-</div>
-
-<div class="school-subtitle">
-
-Sistem Absensi Digital
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="live-status">
+    <div class="live-status">
 
-<span class="live-dot"></span>
+        <span class="live-dot"></span>
 
-Sistem Aktif
+        Sistem Aktif
 
-</div>
+    </div>
 
 </header>
 
 
 
-<!-- =================================================
-MAIN
-================================================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="main">
 
 <div class="content">
 
 
-<!-- =================================================
-SCANNER
-================================================= -->
+<!-- =====================================================
+     SCANNER
+===================================================== -->
 
 <section class="card scanner-card">
 
 
-<div class="card-title">
+    <div class="card-title">
+        📷 Scan Absensi
+    </div>
 
-📷 Scan Absensi
 
-</div>
+    <div class="card-description">
+        Arahkan QR Code siswa ke dalam bingkai.
+    </div>
 
-<div class="card-description">
 
-Arahkan QR Code siswa ke dalam bingkai.
 
-</div>
+    <!-- MODE -->
 
+    <div class="mode-wrapper">
 
-<!-- MODE -->
+        <button
+            id="modeMasuk"
+            class="mode-btn active"
+            onclick="setMode('masuk')">
 
-<div class="mode-wrapper">
+            🏫 ABSEN MASUK
 
-<button
-id="modeMasuk"
-class="mode-btn active"
-onclick="setMode('masuk')">
+        </button>
 
-🏫 ABSEN MASUK
 
-</button>
+        <button
+            id="modePulang"
+            class="mode-btn"
+            onclick="setMode('pulang')">
 
+            🏠 ABSEN PULANG
 
-<button
-id="modePulang"
-class="mode-btn"
-onclick="setMode('pulang')">
+        </button>
 
-🏠 ABSEN PULANG
+    </div>
 
-</button>
 
-</div>
 
+    <!-- CAMERA -->
 
-<!-- CAMERA -->
+    <div class="camera-container">
 
-<div class="camera-container">
+        <div
+            id="cameraBox"
+            class="camera-box">
 
-<div
-id="cameraBox"
-class="camera-box">
 
+            <!-- HTML5 QR -->
 
-<!-- HTML5 QR -->
+            <div id="reader"></div>
 
-<div id="reader"></div>
 
 
-<!-- PLACEHOLDER -->
+            <!-- PLACEHOLDER -->
 
-<div
-class="camera-placeholder">
+            <div class="camera-placeholder">
 
-<div
-class="camera-placeholder-icon">
+                <div class="camera-placeholder-icon">
+                    📷
+                </div>
 
-📷
+                <div class="camera-placeholder-title">
+                    Kamera Belum Diaktifkan
+                </div>
 
-</div>
+                <div class="camera-placeholder-text">
 
-<div
-class="camera-placeholder-title">
+                    Tekan tombol
+                    <strong>AKTIFKAN KAMERA</strong>
+                    untuk memulai.
 
-Kamera Belum Diaktifkan
+                </div>
 
-</div>
+            </div>
 
-<div
-class="camera-placeholder-text">
 
-Tekan tombol
-<strong>
-AKTIFKAN KAMERA
-</strong>
-untuk memulai.
 
-</div>
+            <!-- SCAN OVERLAY -->
 
-</div>
+            <div class="camera-overlay">
 
+                <div class="scan-frame">
 
-<!-- OVERLAY -->
+                    <div class="scan-corner-left-bottom"></div>
 
-<div class="camera-overlay">
+                    <div class="scan-corner-right-top"></div>
 
-<div class="scan-frame">
+                    <div class="scan-laser"></div>
 
-<div
-class="scan-corner-left-bottom">
-</div>
+                </div>
 
-<div
-class="scan-corner-right-top">
-</div>
+            </div>
 
-<div class="scan-laser">
-</div>
 
-</div>
 
-</div>
+            <!-- CAMERA STATUS -->
 
+            <div
+                id="cameraStatus"
+                class="camera-status">
 
-<div
-id="cameraStatus"
-class="camera-status">
+                Kamera belum aktif
 
-Kamera belum aktif
+            </div>
 
-</div>
 
+        </div>
 
-</div>
+    </div>
 
-</div>
 
 
-<!-- BUTTON -->
+    <!-- CONTROLS -->
 
-<div class="controls">
+    <div class="controls">
 
+        <button
+            id="startButton"
+            class="btn-camera btn-start"
+            onclick="toggleCamera()">
 
-<button
-id="startButton"
-class="btn-camera btn-start"
-onclick="toggleCamera()">
+            📷 AKTIFKAN KAMERA
 
-📷 AKTIFKAN KAMERA
+        </button>
 
-</button>
 
+        <button
+            id="switchButton"
+            class="btn-camera btn-switch"
+            onclick="switchCamera()"
+            disabled>
 
-<button
-id="switchButton"
-class="btn-camera btn-switch"
-onclick="switchCamera()"
-disabled>
+            🔄 GANTI KAMERA
 
-🔄 GANTI KAMERA
+        </button>
 
-</button>
+    </div>
 
-</div>
 
 
-<!-- FILE -->
+    <!-- FILE SCAN -->
 
-<label class="file-scan">
+    <label class="file-scan">
 
-📁
-Scan QR dari File / Foto
+        📁 Scan QR dari File / Foto
 
-<input
-type="file"
-accept="image/*"
-id="qrFile"
-onchange="scanFromFile(event)">
+        <input
+            type="file"
+            accept="image/*"
+            id="qrFile"
+            onchange="scanFromFile(event)">
 
-</label>
+    </label>
 
 
 </section>
 
 
 
-<!-- =================================================
-RESULT
-================================================= -->
+<!-- =====================================================
+     RESULT
+===================================================== -->
 
 <section class="card result-card">
 
 
-<div
-id="resultIcon"
-class="result-icon">
+    <div
+        id="resultIcon"
+        class="result-icon">
 
-👋
+        👋
 
-</div>
-
-
-<div
-id="resultTitle"
-class="result-title">
-
-Selamat Datang! 🌸
-
-</div>
+    </div>
 
 
-<div
-id="resultMessage"
-class="result-message">
+    <div
+        id="resultTitle"
+        class="result-title">
 
-Silakan scan QR Code untuk melakukan absensi.
+        Selamat Datang! 🌸
 
-</div>
-
-
-<div
-id="studentResult"
-class="student-result">
+    </div>
 
 
-<div
-id="studentName"
-class="student-name">
+    <div
+        id="resultMessage"
+        class="result-message">
 
--
+        Silakan scan QR Code untuk melakukan absensi.
 
-</div>
-
-
-<div
-id="studentClass"
-class="student-class">
-
--
-
-</div>
+    </div>
 
 
-<div class="result-info">
+
+    <!-- STUDENT RESULT -->
+
+    <div
+        id="studentResult"
+        class="student-result">
 
 
-<div class="info">
+        <div
+            id="studentName"
+            class="student-name">
 
-<div class="info-label">
+            -
 
-WAKTU
-
-</div>
-
-<div
-id="resultTime"
-class="info-value">
-
--
-
-</div>
-
-</div>
+        </div>
 
 
-<div class="info">
+        <div
+            id="studentClass"
+            class="student-class">
 
-<div class="info-label">
+            -
 
-STATUS
+        </div>
 
-</div>
 
-<div
-id="resultStatus"
-class="info-value">
 
--
+        <div class="result-info">
 
-</div>
 
-</div>
+            <div class="info">
 
-</div>
+                <div class="info-label">
+                    WAKTU
+                </div>
 
-</div>
+                <div
+                    id="resultTime"
+                    class="info-value">
+
+                    -
+
+                </div>
+
+            </div>
+
+
+
+            <div class="info">
+
+                <div class="info-label">
+                    STATUS
+                </div>
+
+                <div
+                    id="resultStatus"
+                    class="info-value">
+
+                    -
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
 
 </section>
 
@@ -1654,14 +1518,15 @@ class="info-value">
 
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
-© 2026
-<strong>
-PAUD Melati Terpadu
-</strong>
-•
-Sistem Absensi Digital
+    © 2026
+    <strong>PAUD Melati Terpadu</strong>
+    • Sistem Absensi Digital
 
 </footer>
 
@@ -1672,17 +1537,17 @@ Sistem Absensi Digital
 
 <script>
 
-/* =====================================================
-   KONFIGURASI
-===================================================== */
+/* =========================================================
+   CONFIGURATION
+========================================================= */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbx_2C-GuZ_9utfh8-phU6O2eqB7ZRqkLS_7Y0wg3lGtxv82BZc5xcD06b-vsJBoT_VQ/exec";
 
 
-/* =====================================================
-   VARIABLE
-===================================================== */
+/* =========================================================
+   VARIABLES
+========================================================= */
 
 let html5QrCode = null;
 
@@ -1695,874 +1560,900 @@ let currentMode = "masuk";
 let processing = false;
 
 
-/* =====================================================
-   MODE
-===================================================== */
+/* =========================================================
+   SET MODE
+========================================================= */
 
 function setMode(mode){
 
-currentMode = mode;
+    currentMode = mode;
 
 
-document
-.getElementById("modeMasuk")
-.classList
-.toggle(
-"active",
-mode === "masuk"
-);
+    document
+        .getElementById("modeMasuk")
+        .classList
+        .toggle(
+            "active",
+            mode === "masuk"
+        );
 
 
-document
-.getElementById("modePulang")
-.classList
-.toggle(
-"active",
-mode === "pulang"
-);
+    document
+        .getElementById("modePulang")
+        .classList
+        .toggle(
+            "active",
+            mode === "pulang"
+        );
 
 
-if(mode === "masuk"){
+    if(cameraRunning){
 
-setCameraStatus(
-cameraRunning
-? "Siap scan absen masuk"
-: "Kamera belum aktif"
-);
+        if(mode === "masuk"){
 
-}else{
+            setCameraStatus(
+                "Siap scan absen masuk"
+            );
 
-setCameraStatus(
-cameraRunning
-? "Siap scan absen pulang"
-: "Kamera belum aktif"
-);
+        }else{
+
+            setCameraStatus(
+                "Siap scan absen pulang"
+            );
+
+        }
+
+    }else{
+
+        setCameraStatus(
+            "Kamera belum aktif"
+        );
+
+    }
 
 }
 
-}
 
-
-/* =====================================================
-   STATUS
-===================================================== */
+/* =========================================================
+   CAMERA STATUS
+========================================================= */
 
 function setCameraStatus(text){
 
-document
-.getElementById("cameraStatus")
-.innerText =
-text;
+    document
+        .getElementById("cameraStatus")
+        .innerText = text;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    TOGGLE CAMERA
-===================================================== */
+========================================================= */
 
 async function toggleCamera(){
 
-if(cameraRunning){
+    if(cameraRunning){
 
-await stopCamera();
+        await stopCamera();
 
-}else{
+    }else{
 
-await startCamera();
+        await startCamera();
+
+    }
 
 }
 
-}
 
-
-/* =====================================================
+/* =========================================================
    START CAMERA
-===================================================== */
+========================================================= */
 
 async function startCamera(){
 
-if(cameraRunning){
+    if(cameraRunning){
 
-return;
+        return;
+
+    }
+
+
+    setCameraStatus(
+        "Mengaktifkan kamera..."
+    );
+
+
+    try{
+
+        if(!html5QrCode){
+
+            html5QrCode =
+                new Html5Qrcode("reader");
+
+        }
+
+
+        await html5QrCode.start(
+
+            {
+                facingMode:
+                    currentCamera
+            },
+
+            {
+
+                fps:10,
+
+                qrbox:
+                    function(
+                        viewfinderWidth,
+                        viewfinderHeight
+                    ){
+
+                        const size =
+                            Math.floor(
+                                Math.min(
+                                    viewfinderWidth,
+                                    viewfinderHeight
+                                ) * .50
+                            );
+
+                        return {
+                            width:size,
+                            height:size
+                        };
+
+                    },
+
+                aspectRatio:1.0
+
+            },
+
+            onScanSuccess,
+
+            function(errorMessage){
+
+                // QR belum ditemukan.
+                // Tidak perlu menampilkan error.
+
+            }
+
+        );
+
+
+        cameraRunning = true;
+
+
+        document
+            .getElementById("cameraBox")
+            .classList
+            .add("camera-active");
+
+
+        document
+            .getElementById("switchButton")
+            .disabled = false;
+
+
+        document
+            .getElementById("startButton")
+            .innerText =
+                "⏹ MATIKAN KAMERA";
+
+
+        if(currentMode === "masuk"){
+
+            setCameraStatus(
+                "Siap scan absen masuk"
+            );
+
+        }else{
+
+            setCameraStatus(
+                "Siap scan absen pulang"
+            );
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        cameraRunning = false;
+
+
+        setCameraStatus(
+            "Kamera gagal diaktifkan"
+        );
+
+
+        alert(
+            "❌ Kamera tidak dapat diaktifkan.\n\n" +
+
+            "Pastikan:\n" +
+
+            "• Browser mengizinkan kamera\n" +
+
+            "• Website menggunakan HTTPS\n" +
+
+            "• Kamera tidak sedang digunakan aplikasi lain."
+        );
+
+    }
 
 }
 
 
-setCameraStatus(
-"Mengaktifkan kamera..."
-);
-
-
-try{
-
-if(!html5QrCode){
-
-html5QrCode =
-new Html5Qrcode(
-"reader"
-);
-
-}
-
-
-await html5QrCode.start(
-
-{
-facingMode:
-currentCamera
-},
-
-{
-fps:10,
-
-qrbox:function(
-viewfinderWidth,
-viewfinderHeight
-){
-
-const size =
-Math.floor(
-Math.min(
-viewfinderWidth,
-viewfinderHeight
-) * 0.55
-);
-
-return {
-width:size,
-height:size
-};
-
-},
-
-aspectRatio:1.0
-
-},
-
-onScanSuccess,
-
-function(errorMessage){
-
-}
-
-);
-
-
-cameraRunning = true;
-
-
-document
-.getElementById("cameraBox")
-.classList
-.add("camera-active");
-
-
-document
-.getElementById("switchButton")
-.disabled = false;
-
-
-document
-.getElementById("startButton")
-.innerText =
-"⏹ MATIKAN KAMERA";
-
-
-setCameraStatus(
-currentMode === "masuk"
-? "Siap scan absen masuk"
-: "Siap scan absen pulang"
-);
-
-
-}catch(error){
-
-console.error(error);
-
-
-cameraRunning = false;
-
-
-setCameraStatus(
-"Kamera gagal diaktifkan"
-);
-
-
-alert(
-"❌ Kamera tidak dapat diaktifkan.\n\n"
-+"Pastikan:\n"
-+"• Browser mengizinkan kamera\n"
-+"• Website menggunakan HTTPS\n"
-+"• Kamera tidak sedang digunakan aplikasi lain."
-);
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================================
    STOP CAMERA
-===================================================== */
+========================================================= */
 
 async function stopCamera(){
 
-if(
-!html5QrCode ||
-!cameraRunning
-){
+    if(
+        !html5QrCode ||
+        !cameraRunning
+    ){
 
-return;
+        return;
+
+    }
+
+
+    try{
+
+        await html5QrCode.stop();
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+
+    cameraRunning = false;
+
+
+    document
+        .getElementById("cameraBox")
+        .classList
+        .remove("camera-active");
+
+
+    document
+        .getElementById("switchButton")
+        .disabled = true;
+
+
+    document
+        .getElementById("startButton")
+        .innerText =
+            "📷 AKTIFKAN KAMERA";
+
+
+    setCameraStatus(
+        "Kamera belum aktif"
+    );
 
 }
 
 
-try{
-
-await html5QrCode.stop();
-
-}catch(error){
-
-console.log(error);
-
-}
-
-
-cameraRunning = false;
-
-
-document
-.getElementById("cameraBox")
-.classList
-.remove("camera-active");
-
-
-document
-.getElementById("switchButton")
-.disabled = true;
-
-
-document
-.getElementById("startButton")
-.innerText =
-"📷 AKTIFKAN KAMERA";
-
-
-setCameraStatus(
-"Kamera belum aktif"
-);
-
-}
-
-
-/* =====================================================
+/* =========================================================
    SWITCH CAMERA
-===================================================== */
+========================================================= */
 
 async function switchCamera(){
 
-if(!cameraRunning){
+    if(!cameraRunning){
 
-return;
+        return;
+
+    }
+
+
+    await stopCamera();
+
+
+    if(
+        currentCamera === "environment"
+    ){
+
+        currentCamera = "user";
+
+    }else{
+
+        currentCamera = "environment";
+
+    }
+
+
+    await startCamera();
 
 }
 
 
-await stopCamera();
-
-
-currentCamera =
-currentCamera === "environment"
-? "user"
-: "environment";
-
-
-await startCamera();
-
-}
-
-
-/* =====================================================
-   QR BERHASIL
-===================================================== */
+/* =========================================================
+   QR SCAN SUCCESS
+========================================================= */
 
 function onScanSuccess(
-decodedText,
-decodedResult
+    decodedText,
+    decodedResult
 ){
 
-if(processing){
+    if(processing){
 
-return;
+        return;
 
-}
-
-processing = true;
+    }
 
 
-processQR(
-decodedText
-);
-
-}
+    processing = true;
 
 
-/* =====================================================
-   PROCESS QR
-===================================================== */
-
-function processQR(
-qr
-){
-
-const callbackName =
-"qrCallback_"
-+
-Date.now();
-
-
-window[callbackName] =
-function(result){
-
-handleResult(
-result
-);
-
-
-try{
-
-delete window[
-callbackName
-];
-
-}catch(e){}
-
-};
-
-
-const url =
-API_URL
-+
-"?action=scan"
-+
-"&mode="
-+
-encodeURIComponent(
-currentMode
-)
-+
-"&qr="
-+
-encodeURIComponent(
-qr
-)
-+
-"&callback="
-+
-callbackName;
-
-
-const script =
-document.createElement(
-"script"
-);
-
-script.src =
-url;
-
-
-script.onerror =
-function(){
-
-handleResult({
-
-success:false,
-
-type:"ERROR",
-
-message:
-"Gagal terhubung ke server."
-
-});
-
-};
-
-
-document
-.body
-.appendChild(
-script
-);
+    processQR(decodedText);
 
 }
 
 
-/* =====================================================
-   RESULT
-===================================================== */
+/* =========================================================
+   SEND QR TO APPS SCRIPT
+========================================================= */
 
-function handleResult(
-result
-){
+function processQR(qr){
 
-processing = false;
-
-
-if(!result){
-
-return;
-
-}
+    const callbackName =
+        "qrCallback_" +
+        Date.now();
 
 
-const icon =
-document.getElementById(
-"resultIcon"
-);
+    window[callbackName] =
+        function(result){
 
-const title =
-document.getElementById(
-"resultTitle"
-);
-
-const message =
-document.getElementById(
-"resultMessage"
-);
-
-const studentResult =
-document.getElementById(
-"studentResult"
-);
+            handleResult(result);
 
 
-if(result.success){
+            try{
 
-studentResult
-.classList
-.add("show");
+                delete window[callbackName];
 
+            }catch(e){}
 
-document.getElementById(
-"studentName"
-).innerText =
-result.siswa || "-";
+        };
 
 
-document.getElementById(
-"studentClass"
-).innerText =
-"Kelas "
-+
-(result.kelas || "-");
+    const url =
+        API_URL +
+
+        "?action=scan" +
+
+        "&mode=" +
+        encodeURIComponent(
+            currentMode
+        ) +
+
+        "&qr=" +
+        encodeURIComponent(qr) +
+
+        "&callback=" +
+        callbackName;
 
 
-document.getElementById(
-"resultTime"
-).innerText =
-result.jam || "-";
+    const script =
+        document.createElement(
+            "script"
+        );
 
 
-document.getElementById(
-"resultStatus"
-).innerText =
-result.status || "BERHASIL";
+    script.src = url;
 
 
-if(result.type === "PULANG"){
+    script.onerror =
+        function(){
 
-icon.innerText =
-"🏠";
+            handleResult({
 
-title.innerText =
-"Sampai Jumpa! 🌸";
+                success:false,
 
-message.innerText =
-result.message
-||
-"Absen pulang berhasil.";
+                type:"ERROR",
 
-speak(
-"Sampai jumpa "
-+
-(result.siswa || "")
-);
+                message:
+                    "Gagal terhubung ke server."
 
-}else{
+            });
 
-icon.innerText =
-"🎉";
+        };
 
-title.innerText =
-"Selamat Datang! 🌸";
 
-message.innerText =
-result.message
-||
-"Absen masuk berhasil.";
-
-speak(
-"Selamat datang "
-+
-(result.siswa || "")
-);
+    document
+        .body
+        .appendChild(script);
 
 }
 
 
-}else{
+/* =========================================================
+   HANDLE RESULT
+========================================================= */
+
+function handleResult(result){
+
+    processing = false;
 
 
-studentResult
-.classList
-.remove("show");
+    const icon =
+        document.getElementById(
+            "resultIcon"
+        );
 
 
-if(
-result.type ===
-"DUPLICATE"
-){
+    const title =
+        document.getElementById(
+            "resultTitle"
+        );
 
-icon.innerText =
-"😊";
 
-title.innerText =
-"Sudah Absen";
+    const message =
+        document.getElementById(
+            "resultMessage"
+        );
 
-message.innerText =
-result.message;
 
-speak(
-result.message
-);
+    const studentResult =
+        document.getElementById(
+            "studentResult"
+        );
+
+
+    if(result.success){
+
+        studentResult
+            .classList
+            .add("show");
+
+
+        document
+            .getElementById(
+                "studentName"
+            )
+            .innerText =
+                result.siswa || "-";
+
+
+        document
+            .getElementById(
+                "studentClass"
+            )
+            .innerText =
+                "Kelas " +
+                (result.kelas || "-");
+
+
+        document
+            .getElementById(
+                "resultTime"
+            )
+            .innerText =
+                result.jam || "-";
+
+
+        document
+            .getElementById(
+                "resultStatus"
+            )
+            .innerText =
+                result.status ||
+                "BERHASIL";
+
+
+        /* =========================
+           ABSEN PULANG
+        ========================= */
+
+        if(
+            result.type === "PULANG"
+        ){
+
+            icon.innerText = "🏠";
+
+
+            title.innerText =
+                "Sampai Jumpa! 🌸";
+
+
+            message.innerText =
+                result.message ||
+                "Absen pulang berhasil.";
+
+
+            speak(
+                "Sampai jumpa " +
+                (result.siswa || "")
+            );
+
+
+        }
+
+        /* =========================
+           ABSEN MASUK
+        ========================= */
+
+        else{
+
+            icon.innerText = "🎉";
+
+
+            title.innerText =
+                "Selamat Datang! 🌸";
+
+
+            message.innerText =
+                result.message ||
+                "Absen masuk berhasil.";
+
+
+            speak(
+                "Selamat datang " +
+                (result.siswa || "")
+            );
+
+        }
+
+
+    }else{
+
+
+        studentResult
+            .classList
+            .remove("show");
+
+
+        /* =========================
+           DUPLICATE
+        ========================= */
+
+        if(
+            result.type === "DUPLICATE"
+        ){
+
+            icon.innerText = "😊";
+
+            title.innerText =
+                "Sudah Absen";
+
+            message.innerText =
+                result.message;
+
+            speak(
+                result.message
+            );
+
+        }
+
+
+        /* =========================
+           DUPLICATE OUT
+        ========================= */
+
+        else if(
+            result.type === "DUPLICATE_OUT"
+        ){
+
+            icon.innerText = "😊";
+
+            title.innerText =
+                "Sudah Absen Pulang";
+
+            message.innerText =
+                result.message;
+
+            speak(
+                result.message
+            );
+
+        }
+
+
+        /* =========================
+           NOT YET IN
+        ========================= */
+
+        else if(
+            result.type === "NOT_YET_IN"
+        ){
+
+            icon.innerText = "🏫";
+
+            title.innerText =
+                "Belum Absen Masuk";
+
+            message.innerText =
+                result.message;
+
+            speak(
+                result.message
+            );
+
+        }
+
+
+        /* =========================
+           NOT FOUND
+        ========================= */
+
+        else if(
+            result.type === "NOT_FOUND"
+        ){
+
+            icon.innerText = "😅";
+
+            title.innerText =
+                "QR Tidak Dikenal";
+
+            message.innerText =
+                result.message;
+
+            speak(
+                "QR siswa tidak terdaftar"
+            );
+
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        else{
+
+            icon.innerText = "⚠️";
+
+            title.innerText =
+                "Terjadi Masalah";
+
+            message.innerText =
+                result.message ||
+                "Silakan coba lagi.";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       RESET AFTER 5 SECONDS
+    ===================================================== */
+
+    setTimeout(
+
+        function(){
+
+            if(!processing){
+
+                studentResult
+                    .classList
+                    .remove("show");
+
+
+                icon.innerText =
+                    "👋";
+
+
+                title.innerText =
+                    "Selamat Datang! 🌸";
+
+
+                message.innerText =
+                    "Silakan scan QR Code untuk melakukan absensi.";
+
+            }
+
+        },
+
+        5000
+
+    );
 
 }
 
-else if(
-result.type ===
-"DUPLICATE_OUT"
-){
 
-icon.innerText =
-"😊";
+/* =========================================================
+   TEXT TO SPEECH
+========================================================= */
 
-title.innerText =
-"Sudah Absen Pulang";
+function speak(text){
 
-message.innerText =
-result.message;
+    if(
+        !("speechSynthesis" in window)
+    ){
 
-speak(
-result.message
-);
+        return;
 
-}
+    }
 
-else if(
-result.type ===
-"NOT_YET_IN"
-){
 
-icon.innerText =
-"🏫";
+    try{
 
-title.innerText =
-"Belum Absen Masuk";
+        window
+            .speechSynthesis
+            .cancel();
 
-message.innerText =
-result.message;
 
-speak(
-result.message
-);
+        const speech =
+            new SpeechSynthesisUtterance(
+                text
+            );
 
-}
 
-else if(
-result.type ===
-"NOT_FOUND"
-){
+        speech.lang = "id-ID";
 
-icon.innerText =
-"😅";
+        speech.rate = .9;
 
-title.innerText =
-"QR Tidak Dikenal";
+        speech.pitch = 1.15;
 
-message.innerText =
-result.message;
+        speech.volume = 1;
 
-speak(
-"QR siswa tidak terdaftar"
-);
 
-}
+        window
+            .speechSynthesis
+            .speak(
+                speech
+            );
 
-else{
 
-icon.innerText =
-"⚠️";
+    }catch(error){
 
-title.innerText =
-"Terjadi Masalah";
+        console.log(error);
 
-message.innerText =
-result.message
-||
-"Silakan coba lagi.";
-
-}
+    }
 
 }
 
 
-/* =====================================================
-   RESET RESULT
-===================================================== */
+/* =========================================================
+   SCAN QR FROM FILE
+========================================================= */
 
-setTimeout(
-function(){
+async function scanFromFile(event){
 
-if(!processing){
-
-studentResult
-.classList
-.remove("show");
-
-icon.innerText =
-"👋";
-
-title.innerText =
-"Selamat Datang! 🌸";
-
-message.innerText =
-"Silakan scan QR Code untuk melakukan absensi.";
-
-}
-
-},
-5000
-);
-
-}
+    const file =
+        event.target.files[0];
 
 
-/* =====================================================
-   SPEECH
-===================================================== */
+    if(!file){
 
-function speak(
-text
-){
+        return;
 
-if(
-!"speechSynthesis"
-in window
-){
-
-return;
-
-}
+    }
 
 
-try{
+    try{
 
-window
-.speechSynthesis
-.cancel();
-
-
-const speech =
-new SpeechSynthesisUtterance(
-text
-);
-
-speech.lang =
-"id-ID";
-
-speech.rate =
-0.9;
-
-speech.pitch =
-1.15;
-
-speech.volume =
-1;
+        const scanner =
+            new Html5Qrcode(
+                "reader"
+            );
 
 
-window
-.speechSynthesis
-.speak(
-speech
-);
-
-}catch(error){
-
-console.log(error);
-
-}
-
-}
+        setCameraStatus(
+            "Memproses gambar QR..."
+        );
 
 
-/* =====================================================
-   SCAN FILE
-===================================================== */
-
-async function scanFromFile(
-event
-){
-
-const file =
-event.target.files[0];
+        const result =
+            await scanner.scanFile(
+                file,
+                true
+            );
 
 
-if(!file){
+        handleResult({
 
-return;
+            success:true,
+
+            type:
+                currentMode === "pulang"
+                    ? "PULANG"
+                    : "MASUK",
+
+            message:
+                "QR berhasil dibaca.",
+
+            siswa:
+                "Memproses...",
+
+            kelas:"-",
+
+            jam:"-",
+
+            status:"MEMPROSES"
+
+        });
+
+
+        processQR(result);
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        handleResult({
+
+            success:false,
+
+            type:"ERROR",
+
+            message:
+                "QR Code tidak ditemukan pada gambar."
+
+        });
+
+    }
+
+
+    event.target.value = "";
 
 }
 
 
-try{
-
-const scanner =
-new Html5Qrcode(
-"reader"
-);
-
-
-setCameraStatus(
-"Memproses gambar QR..."
-);
-
-
-const result =
-await scanner.scanFile(
-file,
-true
-);
-
-
-handleResult({
-
-success:true,
-
-type:
-currentMode === "pulang"
-? "PULANG"
-: "MASUK",
-
-message:
-"QR berhasil dibaca.",
-
-siswa:"Memproses...",
-
-kelas:"-",
-
-jam:"-",
-
-status:"MEMPROSES"
-
-});
-
-
-processQR(
-result
-);
-
-
-}catch(error){
-
-console.error(error);
-
-
-handleResult({
-
-success:false,
-
-type:"ERROR",
-
-message:
-"QR Code tidak ditemukan pada gambar."
-
-});
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================================
    KEYBOARD SHORTCUT
-===================================================== */
+========================================================= */
 
 document.addEventListener(
-"keydown",
-function(event){
+    "keydown",
+    function(event){
 
-/*
- SPACE = kamera
- */
+        /* SPACE */
 
-if(
-event.code ===
-"Space"
-){
+        if(
+            event.code === "Space"
+        ){
 
-event.preventDefault();
+            event.preventDefault();
 
-toggleCamera();
+            toggleCamera();
 
-}
+        }
 
 
-/*
- M = masuk
- */
+        /* M = MASUK */
 
-if(
-event.key.toLowerCase()
-===
-"m"
-){
+        if(
+            event.key.toLowerCase() === "m"
+        ){
 
-setMode(
-"masuk"
+            setMode("masuk");
+
+        }
+
+
+        /* P = PULANG */
+
+        if(
+            event.key.toLowerCase() === "p"
+        ){
+
+            setMode("pulang");
+
+        }
+
+    }
 );
 
-}
 
-
-/*
- P = pulang
- */
-
-if(
-event.key.toLowerCase()
-===
-"p"
-){
-
-setMode(
-"pulang"
-);
-
-}
-
-});
-
-
-/* =====================================================
-   INIT
-===================================================== */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 setMode("masuk");
 
 </script>
 
-
 </body>
-
 </html>
