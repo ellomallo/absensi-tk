@@ -878,6 +878,43 @@
 
 
         /* =====================================================
+           START SCANNING BUTTON
+        ====================================================== */
+
+        .start-scan-btn {
+            border: none;
+            border-radius: 14px;
+            padding: 13px 22px;
+            margin-top: 18px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(37,99,235,0.30);
+            transition: 0.2s;
+        }
+
+        .start-scan-btn:hover {
+            transform: translateY(-1px);
+            background: #1d4ed8;
+        }
+
+        .start-scan-btn:active {
+            transform: translateY(0);
+        }
+
+        .start-scan-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .camera-box:not(.active) .camera-overlay {
+            display: none;
+        }
+
+        /* =====================================================
            MOBILE
         ====================================================== */
 
@@ -1072,7 +1109,7 @@
                 id="statusText"
                 class="status-text"
             >
-                Kamera belum aktif
+                Klik "Mulai Scanning" untuk memulai
             </span>
 
         </div>
@@ -1174,7 +1211,7 @@
 
                     <i class="bi bi-play-fill"></i>
 
-                    Mulai
+                    Mulai Scanning
 
                 </button>
 
@@ -1225,9 +1262,19 @@
                 </h4>
 
                 <p>
-                    Tekan tombol "Mulai"
-                    untuk mengaktifkan kamera.
+                    Tekan tombol di bawah untuk
+                    mengaktifkan kamera dan memulai scanning.
                 </p>
+
+                <button
+                    type="button"
+                    id="startScanOverlayBtn"
+                    class="start-scan-btn"
+                    onclick="startCamera()"
+                >
+                    <i class="bi bi-play-circle-fill"></i>
+                    Mulai Scanning
+                </button>
 
             </div>
 
@@ -1716,11 +1763,21 @@ function updateCameraSelect() {
 
 async function startCamera() {
 
+    // Kamera/scanning HANYA boleh aktif setelah fungsi ini
+    // dipanggil oleh tombol "Mulai Scanning".
     if (cameraRunning) {
-
         return;
     }
 
+    const startButtons = [
+        document.getElementById("startScanOverlayBtn"),
+        document.querySelector('button[onclick="startCamera()"]')
+    ].filter(Boolean);
+
+    startButtons.forEach(function (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Mengaktifkan...';
+    });
 
     const permission =
         await requestCameraPermission();
@@ -1861,6 +1918,20 @@ async function startCamera() {
         cameraRunning =
             true;
 
+        const overlayStartBtn =
+            document.getElementById("startScanOverlayBtn");
+
+        if (overlayStartBtn) {
+            overlayStartBtn.style.display = "none";
+        }
+
+        startButtons.forEach(function (btn) {
+            if (btn.id !== "startScanOverlayBtn") {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-stop-fill"></i> Stop';
+            }
+        });
+
 
         document
             .getElementById(
@@ -1900,6 +1971,16 @@ async function startCamera() {
 
         cameraRunning =
             false;
+
+        startButtons.forEach(function (btn) {
+            btn.disabled = false;
+
+            if (btn.id === "startScanOverlayBtn") {
+                btn.innerHTML = '<i class="bi bi-play-circle-fill"></i> Mulai Scanning';
+            } else {
+                btn.innerHTML = '<i class="bi bi-play-fill"></i> Mulai Scanning';
+            }
+        });
 
 
         updateStatus(
@@ -1949,6 +2030,25 @@ async function stopCamera() {
 
     cameraRunning =
         false;
+
+    const overlayStartBtn =
+        document.getElementById("startScanOverlayBtn");
+
+    if (overlayStartBtn) {
+        overlayStartBtn.style.display = "inline-flex";
+        overlayStartBtn.disabled = false;
+        overlayStartBtn.innerHTML =
+            '<i class="bi bi-play-circle-fill"></i> Mulai Scanning';
+    }
+
+    const topStartBtn =
+        document.querySelector('button[onclick="startCamera()"]');
+
+    if (topStartBtn) {
+        topStartBtn.disabled = false;
+        topStartBtn.innerHTML =
+            '<i class="bi bi-play-fill"></i> Mulai Scanning';
+    }
 
 
     document
@@ -2153,6 +2253,12 @@ async function onScanSuccess(
     decodedText,
     decodedResult
 ) {
+
+    // Safety gate: tidak ada proses QR dari kamera
+    // sebelum tombol "Mulai Scanning" berhasil mengaktifkan kamera.
+    if (!cameraRunning) {
+        return;
+    }
 
     const qrId =
         String(decodedText)
@@ -3391,27 +3497,8 @@ document.addEventListener(
         }
 
 
-        // SPACE = START / STOP
-
-        if (
-            event.code ===
-            "Space"
-        ) {
-
-            event.preventDefault();
-
-
-            if (cameraRunning) {
-
-                stopCamera();
-
-            } else {
-
-                startCamera();
-
-            }
-
-        }
+        // SPACE tidak digunakan untuk memulai scanner.
+        // Scanner hanya dimulai melalui tombol "Mulai Scanning".
 
 
         // C = SWITCH CAMERA
